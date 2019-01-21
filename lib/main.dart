@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+import 'Example.dart';
 import 'child1.dart';
+import 'gacha.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title:'PlaceHolder',
+      debugShowCheckedModeBanner: false,
       home: RandomWords(),
     );
   }
@@ -18,15 +19,14 @@ class RandomWordsState extends State<RandomWords> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     PlaceholderWidget(),
-    PlaceholderWidget(),
-    PlaceholderWidget(),
-    PlaceholderWidget()
+    Placeholderexample(),
+    gachaSys(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Placeholder'),
+        title: Text("Placeholder"),
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

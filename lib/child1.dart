@@ -1,39 +1,39 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:test_app/Example.dart';
 
 class PlaceholderWidget extends StatelessWidget {
   PlaceholderWidget();
-  final List<WordPair>_suggestions = <WordPair>[];
-  final Set<WordPair> _saved = new Set<WordPair>();
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+  final List<String> unitNames = ["Cherche","Chrom"];
+  final List<String> unitImages = ["assets/cherche.png","assets/chrom.png"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildSuggestions(),
+      body: _list(),
     );
   }
-  Widget _buildSuggestions() {
-    return ListView.builder(
-        padding: const EdgeInsets.all(16.0),
-        itemBuilder: (context, i) {
-          if (i.isOdd) return Divider();
-          final index = i ~/ 2; /*3*/
-          if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); /*4*/
-          }
-          return _buildRow(_suggestions[index]);
-        });
+
+  Widget _list() {
+    return GridView.builder(
+      padding: const EdgeInsets.all(16.0),
+      itemBuilder: (context, i) {
+        return Card(
+          child: _card(unitNames[i], unitImages[i])
+        );
+      },
+      itemCount: unitNames.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+    );
   }
-  Widget _buildRow(WordPair pair){
-    final bool alreadySaved = _saved.contains(pair);
-    return ListTile(
-      title:Text(
-        pair.asPascalCase,
-        style: _biggerFont,
-      ),
-      trailing: new Icon(
-        alreadySaved ? Icons.favorite : Icons.keyboard_arrow_down,
-        color: alreadySaved ? Colors.red : null,
+  Widget _card(String string, String image){
+    return InkWell(
+      onTap: (){
+        print("tapped");
+      },
+      child: new Column(
+        children: <Widget>[
+          Text(string),
+          Image.asset(image)
+        ],
       ),
     );
   }
