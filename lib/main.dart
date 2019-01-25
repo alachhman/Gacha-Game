@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'Example.dart';
 import 'child1.dart';
 import 'gacha.dart';
-
+import 'dart:async';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,8 +15,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class RandomWordsState extends State<RandomWords> {
   int _currentIndex = 0;
+  DateTime now = DateTime.now();
   final List<Widget> _children = [
     PlaceholderWidget(),
     Placeholderexample(),
@@ -26,7 +28,18 @@ class RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Placeholder"),
+        title: Text('Placeholder'),
+        actions: <Widget>[
+          Text("$now"),
+          IconButton(
+            icon: Icon(Icons.playlist_add),
+            tooltip: 'Restitch it',
+          ),
+          IconButton(
+            icon: Icon(Icons.playlist_add_check),
+            tooltip: 'Repair it',
+          ),
+        ],
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
