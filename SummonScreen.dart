@@ -55,8 +55,9 @@ class MyCard extends StatelessWidget{
                               onPressed: () {
                                 showDialog(
                                     context:context,
-                                  child: new Card(
-                                    child: const Text("hello"),
+                                  builder: (BuildContext context) => new Card(
+                                    child: const Text("yftdtdhgjdghjdhgjdghjd"),
+
                                   ),
                                 );
                               },
