@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 
 
-void main() => runApp(new Placeholder());
+void main() => runApp(new SummonScreenWidget());
 
-class PlaceholderWidget extends StatelessWidget {
-  PlaceholderWidget();
+class SummonScreenWidget extends StatelessWidget {
+  SummonScreenWidget();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -31,11 +31,19 @@ class MyCard extends StatelessWidget{
                       child: new Row(
                         children: <Widget>[
                           new RaisedButton(
-                              child: const Text('Button'),
-                            onPressed: (){
+                            child: const Text('Summon'),
+                            color: Theme.of(context).accentColor,
+                            elevation: 4.0,
+                            splashColor: Colors.blueGrey,
+                            onPressed: () {
+                              showDialog(
+                                context:context,
+                                builder: (BuildContext context) => new Card(
+                                  child: const Text("yftdtdhgjdghjdhgjdghjd"),
 
+                                ),
+                              );
                             },
-
                           ),
                         ],
                       ),
@@ -48,19 +56,11 @@ class MyCard extends StatelessWidget{
                         child: new Row(
                           children: <Widget>[
                             new RaisedButton(
-                              child: const Text('Summon'),
-                              color: Theme.of(context).accentColor,
-                              elevation: 4.0,
-                              splashColor: Colors.blueGrey,
-                              onPressed: () {
-                                showDialog(
-                                    context:context,
-                                  builder: (BuildContext context) => new Card(
-                                    child: const Text("yftdtdhgjdghjdhgjdghjd"),
+                              child: const Text('Button'),
+                              onPressed: (){
 
-                                  ),
-                                );
                               },
+
                             ),
 
                           ],
