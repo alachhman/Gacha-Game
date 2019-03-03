@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'PlaceholderWidget.dart';
+import 'SummonScreen.dart';
 import 'PlayScreen.dart';
 import 'TeamScreen.dart';
 
@@ -15,7 +15,7 @@ class _HomeState extends State<HomeScreen> {
   final List<Widget> _children = [
     TeamScreenWidget(),
     PlayScreenWidget(),
-    PlaceholderWidget(Colors.blue)
+    SummonScreenWidget(),
   ];
 
   @override
