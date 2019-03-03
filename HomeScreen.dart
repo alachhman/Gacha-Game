@@ -17,7 +17,7 @@ class _HomeState extends State<HomeScreen> {
   final List<Widget> _children = [
     TeamScreenWidget(),
     PlayScreenWidget(),
-    PlaceholderWidget()
+    SummonScreenWidget()
   ];
 
   @override
