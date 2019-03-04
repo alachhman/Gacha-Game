@@ -1,5 +1,4 @@
 include ':app'
-include ':BattleSystem2D-release'
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
@@ -14,4 +13,3 @@ plugins.each { name, path ->
     include ":$name"
     project(":$name").projectDir = pluginDirectory
 }
-

@@ -4,77 +4,28 @@ class TeamScreenWidget extends StatelessWidget {
   TeamScreenWidget();
 
   Widget build(BuildContext context) {
-    Widget subtitle = new Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                ),
-                RichText(
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children:<TextSpan>[
-                        TextSpan(
-                            text: 'Team:',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                            )
-                        ),
-                      ]
-                    )
-                ),
-              ]
-          ),
-          Row (
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                color: Colors.red,
-                width: 135.0,
-                height:150.0,
-              ),
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                color: Colors.blue,
-                width: 135.0,
-                height:150.0,
-              ),
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                color: Colors.green,
-                width: 135.0,
-                height:150.0,
-              )
-            ]
-          ),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                ),
-                RichText(
-                    text: TextSpan(
-                        style: DefaultTextStyle.of(context).style,
-                        children:<TextSpan>[
-                          TextSpan(
-                              text: 'Your Unit Pool:',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              )
-                          ),
-                        ]
-                    )
-                ),
-              ]
-          ),
-        ]
+    Widget subtitle = new Row (
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+      Container(
+      padding: const EdgeInsets.all(8.0),
+      color: Colors.red,
+      width: 135.0,
+      height:150.0,
+    ),
+        Container(
+        padding: const EdgeInsets.all(8.0),
+    color: Colors.blue,
+    width: 135.0,
+    height:150.0,
+    ),
+    Container(
+    padding: const EdgeInsets.all(8.0),
+    color: Colors.green,
+    width: 135.0,
+    height:150.0,
+    )
+    ]
     );
 
 
@@ -110,11 +61,10 @@ class TeamScreenWidget extends StatelessWidget {
 
 
   Widget _displayGridItem(String value) {
-    return new Card (
-      margin: new EdgeInsets.all(5.0),
+    return new Container (
+      padding: new EdgeInsets.all(8.0),
       color: Colors.blue,
       child: new Text(value),
-      elevation: 5,
     );
   }
 
