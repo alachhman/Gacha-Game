@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PlayScreenWidget extends StatelessWidget {
+  static const platform = const MethodChannel('samples.flutter.io/battle');
   PlayScreenWidget();
 
   final List<String> sendersList = ["Area 1", "Area 2", "Area 3"];
@@ -11,6 +13,15 @@ class PlayScreenWidget extends StatelessWidget {
       body: stages(),
     );
   }
+  Future<String> _launch() async{
+    String value;
+    try {
+      value = await platform.invokeMethod('start');
+    }on PlatformException catch(e) {
+      print(e);
+    }
+    return value;
+  }
 
   Widget stages() {
     return ListView.builder(
@@ -19,6 +30,7 @@ class PlayScreenWidget extends StatelessWidget {
           return InkWell(
             onTap: (){
               print("stage tapped");
+              _launch();
             },
             child: Column(
               children: <Widget>[
