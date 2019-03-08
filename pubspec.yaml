@@ -49,6 +49,7 @@ flutter:
     - assets/images/icons/sword.png
     - assets/images/icons/boop.png
     - assets/images/icons/dagger.png
+    - assets/backgrounds/summonBackground.PNG
     - assets/cherche.png
     - assets/chrom.png
 

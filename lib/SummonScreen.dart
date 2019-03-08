@@ -103,41 +103,58 @@ class SummonScreenWidget extends StatelessWidget {
   }
   Card gacharesults(){
     Random rand = new Random();
-    //unit rarity is randomized for now, will be finalized and dependant on the unit in the future.
+    //unit rarity is hardcoded for now, will be finalized and dependant on the unit in the future.
     int starCount = rand.nextInt(5);
     int result = rand.nextInt(pool.length);
     String obtained = pool[result];
     return Card(
       elevation: 20,
       margin: EdgeInsets.fromLTRB(70, 220, 70, 300),
+        shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
       child:
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("You've Obtained:")
-              ],
-            ),
-            Row(
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/backgrounds/summonBackground.PNG"),
+              fit: BoxFit.fill,
+              alignment: Alignment.topCenter,
+            )
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset(obtained)
-                ]
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+                  Text("You've Obtained",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(obtained)
+                  ]
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
                   Icon(Icons.star),
                   Icon(Icons.star),
                   Icon(Icons.star),
                   Icon(Icons.star),
                   Icon(Icons.star),
                 ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        )
     );
   }
 }
