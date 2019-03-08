@@ -145,11 +145,11 @@ class SummonScreenWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.star),
-                  Icon(Icons.star),
-                  Icon(Icons.star),
-                  Icon(Icons.star),
-                  Icon(Icons.star),
+                  new Image.asset("assets/gui/star.png"),
+                  new Image.asset("assets/gui/star.png"),
+                  new Image.asset("assets/gui/star.png"),
+                  new Image.asset("assets/gui/star.png"),
+                  new Image.asset("assets/gui/star.png"),
                 ],
               ),
             ],
