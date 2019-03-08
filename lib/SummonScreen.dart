@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 
@@ -11,6 +13,7 @@ class SummonScreenWidget extends StatelessWidget {
     ['https://c-3sux78kvnkay76x24mgskvkjogx2eiax78ykijtx2eius.g00.gamepedia.com/g00/3_c-3kdboay.mgskvkjog.ius_/c-3SUXKVNKAY76x24nzzvyx3ax2fx2fmgskvkjog.iax78ykijt.iusx2fkdboay_mgskvkjog_ktx2f4x2f4lx2fMging-Omtgiou.vtmx3fbkx78youtx3d44j985kli454jj2g20i594l2837h8l9gx26o76i.sgx78qx3dosgmk_\$/\$/\$/\$/\$',"Banner5"],
     ['https://c-3sux78kvnkay76x24mgskvkjogx2eiax78ykijtx2eius.g00.gamepedia.com/g00/3_c-3kdboay.mgskvkjog.ius_/c-3SUXKVNKAY76x24nzzvyx3ax2fx2fmgskvkjog.iax78ykijt.iusx2fkdboay_mgskvkjog_ktx2f4x2f4lx2fMging-Omtgiou.vtmx3fbkx78youtx3d44j985kli454jj2g20i594l2837h8l9gx26o76i.sgx78qx3dosgmk_\$/\$/\$/\$/\$',"Banner6"]
   ];
+  final List<String> pool = ["assets/cherche.png","assets/chrom.png"];
   Widget build(BuildContext context) {
     return Scaffold(
       body: bannerList(),
@@ -69,6 +72,10 @@ class SummonScreenWidget extends StatelessWidget {
                 color: Theme.of(context).accentColor,
                 onPressed: (){
                   print("Summon " + position.toString() +  " Pressed");
+                  showDialog(
+                    context: context,
+                    child: gacharesults(),
+                  );
                 },
               )
             ],
@@ -76,7 +83,7 @@ class SummonScreenWidget extends StatelessWidget {
         ],
       ),
       elevation: 5,
-      color: Colors.grey,
+      color: Colors.white,
     );
   }
   Card Dialog(BuildContext context, int position){
@@ -92,6 +99,45 @@ class SummonScreenWidget extends StatelessWidget {
           Text(bannerInfo[position][1]),
         ],
       )
+    );
+  }
+  Card gacharesults(){
+    Random rand = new Random();
+    //unit rarity is randomized for now, will be finalized and dependant on the unit in the future.
+    int starCount = rand.nextInt(5);
+    int result = rand.nextInt(pool.length);
+    String obtained = pool[result];
+    return Card(
+      elevation: 20,
+      margin: EdgeInsets.fromLTRB(70, 220, 70, 300),
+      child:
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("You've Obtained:")
+              ],
+            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(obtained)
+                ]
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                  Icon(Icons.star),
+                  Icon(Icons.star),
+                  Icon(Icons.star),
+                  Icon(Icons.star),
+                  Icon(Icons.star),
+                ],
+            ),
+          ],
+        ),
     );
   }
 }
