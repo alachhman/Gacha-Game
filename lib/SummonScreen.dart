@@ -47,7 +47,7 @@ class SummonScreenWidget extends StatelessWidget {
                   print("More Info " + position.toString() + " Tapped");
                   showDialog(
                       context: context,
-                      child: Dialog(context, position)
+                      child: dialog(context, position)
                   );
                 },
               )
@@ -74,7 +74,7 @@ class SummonScreenWidget extends StatelessWidget {
                   print("Summon " + position.toString() +  " Pressed");
                   showDialog(
                     context: context,
-                    child: gacharesults(),
+                    child: gachaResults(),
                   );
                 },
               )
@@ -86,7 +86,7 @@ class SummonScreenWidget extends StatelessWidget {
       color: Colors.white,
     );
   }
-  Card Dialog(BuildContext context, int position){
+  Card dialog(BuildContext context, int position){
     return Card(
         elevation: 20,
         margin: EdgeInsets.all(20),
@@ -101,7 +101,7 @@ class SummonScreenWidget extends StatelessWidget {
         )
     );
   }
-  Card gacharesults(){
+  Card gachaResults(){
     Random rand = new Random();
     //unit rarity is hardcoded for now, will be finalized and dependant on the unit in the future.
     int starCount = rand.nextInt(5);
@@ -109,7 +109,7 @@ class SummonScreenWidget extends StatelessWidget {
     String obtained = pool[result];
     return Card(
         elevation: 20,
-        margin: EdgeInsets.fromLTRB(70, 220, 70, 300),
+        margin: EdgeInsets.fromLTRB(70, 220, 70, 220),
         shape: BeveledRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),

@@ -11,7 +11,9 @@ class HomeScreenWidget extends StatelessWidget {
   }
 
   Widget newsCard(){
-    return Card();
+    return Card(
+
+    );
 
 
     }
