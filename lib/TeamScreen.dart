@@ -5,70 +5,77 @@ class TeamScreenWidget extends StatelessWidget {
   TeamScreenWidget();
 
   Widget build(BuildContext context) {
-    Widget unitcards = new Row (
+    Widget unitCards = new Row (
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             padding: const EdgeInsets.all(10.0),
             color: Colors.red,
             width: 135.0,
-            height:150.0,
+            height: 150.0,
           ),
           Container(
             padding: const EdgeInsets.all(10.0),
             color: Colors.blue,
             width: 135.0,
-            height:150.0,
+            height: 150.0,
           ),
           Container(
             padding: const EdgeInsets.all(10.0),
             color: Colors.green,
             width: 135.0,
-            height:150.0,
+            height: 150.0,
           )
         ]
     );
     //====================================================================================================================
 
-    Widget unitgrid = StreamBuilder(
-      stream: Firestore.instance.collection('kUnitList').snapshots(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (!snapshot.hasData) {
-          return Center(child: const Text('Loading events...'));
+    Widget unitGrid = StreamBuilder(
+        stream: Firestore.instance.collection('kUnitList').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: const Text('Loading events...'));
+          }
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GridView.builder(
+                  itemCount: snapshot.data.documents.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      color: Colors.grey,
+                      child: Column(
+                        children: <Widget>[
+                          Column(
+                            children: [
+                              Text(snapshot.data.documents[index]['name']),
+                              Text('Current exp: ' + snapshot.data.documents[index]['CurrEXP'].toString()),
+                              Text('Unit ID: ' +
+                                  snapshot.data.documents[index]['UnitID']
+                                      .toString()),
+                              Text('Unit Type: ' +
+                                  snapshot.data.documents[index]['type']
+                                      .toString())
+                            ],
+                          )
+
+                        ],
+                      ),
+                    );
+                  }
+          )
+        ]
+          );
         }
-        return GridView.builder(
-
-            itemCount: snapshot.data.documents.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                child: Column(
-                  children: <Widget>[
-                    Column(
-                      children:[
-                        Text(snapshot.data.documents[index]['name']),
-                        Text('Current exp: ' + snapshot.data.documents[index]['CurrEXP'].toString()),
-                        Text('Unit ID: ' + snapshot.data.documents[index]['UnitID'].toString()),
-                        Text('Unit Type: ' + snapshot.data.documents[index]['type'].toString())
-                      ],
-                    )
-
-                  ],
-                ),
-              );
-            }
-        );
-      },
     );
-
-
-
-
-    //=====================================================================================================================
+    //=====================================================v================================================================
 
     /*   Widget gridSection = new Expanded(
       flex: 1,
       child: new GridView.count(
+          itemCount:  snapshot.data.documents.length,
           crossAxisCount: 4,
           childAspectRatio: 1.0,
           mainAxisSpacing: 4.0,
@@ -83,8 +90,8 @@ class TeamScreenWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        unitcards,
-        unitgrid,
+        unitCards,
+        unitGrid,
       ],
     );
 
@@ -95,7 +102,7 @@ class TeamScreenWidget extends StatelessWidget {
       ),
     );
   }
-
+}
 /*
   Widget _displayGridItem(String value) {
     return new Card (
@@ -105,15 +112,14 @@ class TeamScreenWidget extends StatelessWidget {
         color: Colors.grey,
     );
   }
-
+}
 
 // Note: Placeholder method to generate grid data
   List<String> _generateGridItems() {
     List<String> gridItems = new List<String>();
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < snapshot.data.documents.length; i++) {
       gridItems.add('Unit ' + i.toString());
     }
     return gridItems;
   }
   */
-}

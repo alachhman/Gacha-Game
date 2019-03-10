@@ -86,19 +86,19 @@ class SummonScreenWidget extends StatelessWidget {
       color: Colors.white,
     );
   }
-  Card Dialog(BuildContext context, int position){
+  Card Dialog(BuildContext context, int position) {
     return Card(
-      elevation: 20,
-      margin: EdgeInsets.all(20),
-      child: Column(
-        children: <Widget>[
-          Divider(
-            color: Colors.black,
-            height: 10,
-          ),
-          Text(bannerInfo[position][1]),
-        ],
-      )
+        elevation: 20,
+        margin: EdgeInsets.all(20),
+        child: Column(
+          children: <Widget>[
+            Divider(
+              color: Colors.black,
+              height: 10,
+            ),
+            Text(bannerInfo[position][1]),
+          ],
+        )
     );
   }
   Card gachaResults(){
@@ -116,11 +116,11 @@ class SummonScreenWidget extends StatelessWidget {
       child:
         Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/backgrounds/summonBackground.PNG"),
-              fit: BoxFit.fill,
-              alignment: Alignment.topCenter,
-            )
+              image: DecorationImage(
+                image: AssetImage("assets/backgrounds/summonBackground.PNG"),
+                fit: BoxFit.fill,
+                alignment: Alignment.topCenter,
+              )
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
