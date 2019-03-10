@@ -1,91 +1,93 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
-//TODO: Get units UNIQUE to user
-//TODO: Finish Login and generate users
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => new _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+//Class for userEnergy
+class getUserEnergy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Papi?"),
-      ),
-      body: new EventList(),
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('users').snapshots(),
+      builder: (BuildContext context,
+          AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) return Text('Loading data');
+        return Text(snapshot.data.documents[0]['Energy'].toString());
+      },
     );
   }
 }
 
-class EventList extends StatefulWidget {
+
+//Class to get userName
+class GetUserName extends StatelessWidget {
   @override
-  EventListState createState() => new EventListState();
-}
-//Below streams the database and grabs my collection 'kUnitList'
-class EventListState extends State<EventList> {
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: Firestore.instance.collection('kUnitList').snapshots(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (!snapshot.hasData) {
-          return Center(child: const Text('Loading events...'));
-        }
-        return GridView.builder(
-            itemCount: snapshot.data.documents.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                child: Column(
-                  children: <Widget>[
-                    Column(
-                      children:[
-                        Text(snapshot.data.documents[index]['name']),
-                        Text('Current exp: ' + snapshot.data.documents[index]['CurrEXP'].toString()),
-                        Text('Unit ID: ' + snapshot.data.documents[index]['UnitID'].toString()),
-                        Text('Unit Type: ' + snapshot.data.documents[index]['type'].toString())
-                      ],
-                    )
-
-                  ],
-                ),
-              );
-            }
-        );
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('users').snapshots(),
+      builder: (BuildContext context,
+          AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) return Text('Loading data');
+        return Text(snapshot.data.documents[0]['Name'].toString());
       },
-    );}}
+    );
+  }
+}
 
 
-
-    //Leave this for future Reference
-
-//class EventList extends StatefulWidget {
-//  @override
-//  EventListState createState() => new EventListState();
-//}
-//
-//class EventListState extends State<EventList> {
-//  Widget build(BuildContext context) {
-//    return StreamBuilder(
-//      stream: Firestore.instance.collection('kUnitList').snapshots(),
-//      builder: (BuildContext context, AsyncSnapshot snapshot) {
-//        if (!snapshot.hasData) {
-//          return Center(child: const Text('Loading events...'));
+// class to the user's Units
+// Firestore.instance.collection('todo_list').where('status', isEqualTo: false).snapshots,
+class GetUserUnits extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('users').where('name', isEqualTo: GetUserName()).snapshots(),
+      builder: (BuildContext context,
+          AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) return Text('Loading data');
+//        List<String> theList;
+//        for(var index = 0; index < snapshot.data.documents.length; index++) {
+//            theList.add(snapshot.data.documents[0]['userUnits'].toString());
+//            //print(theList[index]);
 //        }
-//        return GridView.builder(
-//          gridDelegate:
-//          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-//          itemBuilder: (BuildContext context, int index) {
-//            return Text(snapshot.data.documents[index]['name']);
-//          },
-//          itemCount: snapshot.data.documents.length,
-//        );
-//      },
-//    );}}
+//        return Text(snapshot.data.documents[0]['userUnits'].toString());
+        return ListView.builder(
+          itemCount: snapshot.data.documents.length,
+          itemBuilder: (context, int index) {
+            Text(snapshot.data.documents[index]['userUnits']);
+          },
+        );
+
+      },
+    );
+  }
+}
+
+// Generates the list of Units into a card view
+class UnitList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('users').snapshots(),
+      builder: (BuildContext context,
+          AsyncSnapshot<QuerySnapshot> snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return new Center(child: new CircularProgressIndicator());
+          default:
+            return new ListView.builder(
+                itemCount: snapshot.data.documents.length,
+                itemBuilder: (context, int) {
+                  return Container(
+                      child: Column(
+                        children: <Widget>[
+                          Text(snapshot.data.documents[int]['userUnits'].toString())
+                        ],
+                      )
+                  );
+                }
+            );
+        }
+      },
+    );
+  }
+}
