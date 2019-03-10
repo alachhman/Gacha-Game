@@ -1,49 +1,21 @@
+
 import 'package:flutter/material.dart';
-import 'localDatabase.dart';
-import 'UnitList.dart';
+import 'MainScreen.dart';
 
-
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Fuck Me Daddy',
-      theme: new ThemeData(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Final Project Game',
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(),
+      home: MainScreen(),
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => new _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Future initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new GetUserName(),
-      ),
-      body: Column(
-        children: <Widget>[
-          getUserEnergy(),
-          GetUserUnits(),
-          testLocalDB(),
-        ],
-      ),
-    );
-  }
-}
-
 
