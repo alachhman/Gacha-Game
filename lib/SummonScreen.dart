@@ -74,7 +74,7 @@ class SummonScreenWidget extends StatelessWidget {
                   print("Summon " + position.toString() +  " Pressed");
                   showDialog(
                     context: context,
-                    child: gacharesults(),
+                    child: gachaResults(),
                   );
                 },
               )
@@ -101,7 +101,7 @@ class SummonScreenWidget extends StatelessWidget {
       )
     );
   }
-  Card gacharesults(){
+  Card gachaResults(){
     Random rand = new Random();
     //unit rarity is hardcoded for now, will be finalized and dependant on the unit in the future.
     int starCount = rand.nextInt(5);
