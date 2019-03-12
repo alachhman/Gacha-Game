@@ -1,4 +1,5 @@
 include ':app'
+include ':BattleSystem2D-release'
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 

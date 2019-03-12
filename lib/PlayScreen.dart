@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PlayScreenWidget extends StatelessWidget {
   PlayScreenWidget();
@@ -23,10 +24,20 @@ class Entry {
   final List<Entry> children;
 }
 class EntryItem extends StatelessWidget {
+  static const platform = const MethodChannel('samples.flutter.io/battle');
   const EntryItem(this.entry);
 
   final Entry entry;
 
+  Future<String> _launch() async{
+    String value;
+    try {
+      value = await platform.invokeMethod('start');
+    }on PlatformException catch(e) {
+      print(e);
+    }
+    return value;
+  }
   Widget _buildTiles(Entry root) {
     String worldImage = "";
     switch(root.title){
@@ -39,6 +50,7 @@ class EntryItem extends StatelessWidget {
         child: ListTile(title: Text(root.title)),
         onTap: (){
           print(root.title);
+          _launch();
         },
       );
     }
