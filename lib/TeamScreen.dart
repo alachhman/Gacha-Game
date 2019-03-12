@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:jfinalproject/database_helper.dart';
+
 
 class TeamScreenWidget extends StatelessWidget {
-  TeamScreenWidget();
-  final List<String> unitPool = [""];
+  List<String> unitPool=[];
+  List<String> tempPool=[];
+  final dbHelper = DatabaseHelper.instance;
   Widget build(BuildContext context) {
-    Widget subtitle = new Column(
+    Widget team = new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
@@ -94,7 +97,7 @@ class TeamScreenWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        subtitle,
+        team,
         gridSection,
       ],
     );
@@ -112,17 +115,45 @@ class TeamScreenWidget extends StatelessWidget {
     return new Card (
       margin: new EdgeInsets.all(5.0),
       color: Colors.blue,
-      child: new Text(value),
+      child: new Image.asset(value),
       elevation: 5,
     );
   }
 
 // Note: Placeholder method to generate grid data
   List<String> _generateGridItems() {
+    _query();
     List<String> gridItems = new List<String>();
-    for (int i = 0; i < 24; i++) {
-      gridItems.add('Unit ' + i.toString());
+    for (int i = 0; i < unitPool.length; i++) {
+      print(unitPool[i]);
+      String toAdd = unitPool[i].substring(26,unitPool[i].length-1);
+      gridItems.add(toAdd);
     }
     return gridItems;
+  }
+  void _query() async {
+    final allRows = await dbHelper.queryAllRows();
+    print('querying all rows');
+    allRows.forEach((row) => {
+        unitPool.add(row.toString())
+    });
+  }
+
+  void _update() async {
+    // row to update
+    Map<String, dynamic> row = {
+      DatabaseHelper.columnId   : 1,
+      DatabaseHelper.columnName : ' ',
+      DatabaseHelper.columnSprite  : " "
+    };
+    final rowsAffected = await dbHelper.update(row);
+    print('updated $rowsAffected row(s)');
+  }
+
+  void _delete() async {
+    // Assuming that the number of rows is the id for the last row.
+    final id = await dbHelper.queryRowCount();
+    final rowsDeleted = await dbHelper.delete(id);
+    print('deleted $rowsDeleted row(s): row $id');
   }
 }

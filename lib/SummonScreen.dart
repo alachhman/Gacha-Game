@@ -2,9 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:jfinalproject/database_helper.dart';
+
+
 
 class SummonScreenWidget extends StatelessWidget {
   SummonScreenWidget();
+  final dbHelper = DatabaseHelper.instance;
   final List<List<String>> bannerInfo = [
     ["https://c-3sux78kvnkay76x24mgskvkjogx2eiax78ykijtx2eius.g00.gamepedia.com/g00/3_c-3kdboay.mgskvkjog.ius_/c-3SUXKVNKAY76x24nzzvyx3ax2fx2fmgskvkjog.iax78ykijt.iusx2fkdboay_mgskvkjog_ktx2fjx2fjkx2fMging-Sex78g.vtmx3fbkx78youtx3d6i07g97gih20j65348643l3604g360j6x26o76i.sgx78qx3dosgmk_\$/\$/\$/\$/\$","Banner1"],
     ['https://c-3sux78kvnkay76x24mgskvkjogx2eiax78ykijtx2eius.g00.gamepedia.com/g00/3_c-3kdboay.mgskvkjog.ius_/c-3SUXKVNKAY76x24nzzvyx3ax2fx2fmgskvkjog.iax78ykijt.iusx2fkdboay_mgskvkjog_ktx2f4x2f4lx2fMging-Omtgiou.vtmx3fbkx78youtx3d44j985kli454jj2g20i594l2837h8l9gx26o76i.sgx78qx3dosgmk_\$/\$/\$/\$/\$',"Banner2"],
@@ -101,12 +105,22 @@ class SummonScreenWidget extends StatelessWidget {
         )
     );
   }
+  void _insert(String name, String sprite) async {
+    // row to insert
+    Map<String, dynamic> row = {
+      DatabaseHelper.columnName : 'name',
+      DatabaseHelper.columnSprite  : sprite
+    };
+    final id = await dbHelper.insert(row);
+    print('inserted row id: $id');
+  }
   Card gachaResults(){
     Random rand = new Random();
     //unit rarity is hardcoded for now, will be finalized and dependant on the unit in the future.
     int starCount = rand.nextInt(5);
     int result = rand.nextInt(pool.length);
     String obtained = pool[result];
+    _insert("unit", obtained);
     return Card(
       elevation: 20,
       margin: EdgeInsets.fromLTRB(70, 220, 70, 300),
