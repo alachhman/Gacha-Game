@@ -122,12 +122,14 @@ class TeamScreenWidget extends StatelessWidget {
 
 // Note: Placeholder method to generate grid data
   List<String> _generateGridItems() {
-    _query();
     List<String> gridItems = new List<String>();
     for (int i = 0; i < unitPool.length; i++) {
       print(unitPool[i]);
       String toAdd = unitPool[i].substring(26,unitPool[i].length-1);
       gridItems.add(toAdd);
+    }
+    if(unitPool.length == null) {
+      _query();
     }
     return gridItems;
   }
@@ -137,6 +139,15 @@ class TeamScreenWidget extends StatelessWidget {
     allRows.forEach((row) => {
         unitPool.add(row.toString())
     });
+  }
+
+  // Function runs if pool is not empty and needs to add units
+  void _comparitiveQuery() async {
+    final id =  await dbHelper.queryRowCount();
+    if(unitPool != [] || unitPool != null) {
+      if (unitPool != tempPool)
+        unitPool = tempPool;
+    }
   }
 
   void _update() async {
