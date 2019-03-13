@@ -128,7 +128,7 @@ class TeamScreenWidget extends StatelessWidget {
       String toAdd = unitPool[i].substring(26,unitPool[i].length-1);
       gridItems.add(toAdd);
     }
-    if(unitPool.length == null) {
+    if(unitPool.length == 0) {
       _query();
     }
     return gridItems;
