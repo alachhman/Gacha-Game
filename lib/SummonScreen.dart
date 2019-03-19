@@ -46,8 +46,8 @@ class SummonScreenWidget extends StatelessWidget {
                 onTap: (){
                   print("More Info " + position.toString() + " Tapped");
                   showDialog(
-                      context: context,
-                      child: dialog(context, position)
+                    context: context,
+                    child: Dialog(context, position)
                   );
                 },
               )
@@ -57,10 +57,10 @@ class SummonScreenWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: maxWidth * 0.9),
-                  child: Image.network(bannerInfo[position][0],
-                    fit: BoxFit.fill,
-                  )
+                constraints: BoxConstraints(maxWidth: maxWidth * 0.9),
+                child: Image.network(bannerInfo[position][0],
+                fit: BoxFit.fill,
+                )
               ),
             ],
           ),
@@ -86,7 +86,7 @@ class SummonScreenWidget extends StatelessWidget {
       color: Colors.white,
     );
   }
-  Card dialog(BuildContext context, int position){
+  Card Dialog(BuildContext context, int position) {
     return Card(
         elevation: 20,
         margin: EdgeInsets.all(20),
@@ -108,12 +108,12 @@ class SummonScreenWidget extends StatelessWidget {
     int result = rand.nextInt(pool.length);
     String obtained = pool[result];
     return Card(
-        elevation: 20,
-        margin: EdgeInsets.fromLTRB(70, 220, 70, 220),
+      elevation: 20,
+      margin: EdgeInsets.fromLTRB(70, 220, 70, 300),
         shape: BeveledRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        child:
+      child:
         Container(
           decoration: BoxDecoration(
               image: DecorationImage(
@@ -130,8 +130,8 @@ class SummonScreenWidget extends StatelessWidget {
                 children: <Widget>[
                   Text("You've Obtained",
                     style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold
                     ),
                   )
                 ],
@@ -145,11 +145,11 @@ class SummonScreenWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.star),
-                  Icon(Icons.star),
-                  Icon(Icons.star),
-                  Icon(Icons.star),
-                  Icon(Icons.star),
+                  new Image.asset("assets/gui/star.png"),
+                  new Image.asset("assets/gui/star.png"),
+                  new Image.asset("assets/gui/star.png"),
+                  new Image.asset("assets/gui/star.png"),
+                  new Image.asset("assets/gui/star.png"),
                 ],
               ),
             ],

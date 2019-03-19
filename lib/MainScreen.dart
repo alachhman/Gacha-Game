@@ -3,6 +3,7 @@ import 'SummonScreen.dart';
 import 'PlayScreen.dart';
 import 'TeamScreen.dart';
 import 'PlaceholderWidget.dart';
+
 class MainScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -22,16 +23,27 @@ class _HomeState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.indigo,
-        title: Text("re:"),
-        actions:[
-          new IconButton(
-            icon: new Image.asset('assets/images/icons/boop.png'),
-            onPressed: () => print("icon pressed boi"),
-          ),
-        ],
-    ),
+      appBar:AppBar(
+            elevation: 10.0,
+            actions: [
+              new Stack(
+                children: <Widget>[
+                Container(
+                  color: Colors.red,
+                  width: 411,
+                  height: 56,
+                  child: new IconButton(
+                    icon: Icon(Icons.settings),
+                    alignment: Alignment.center,
+                    onPressed: () => print("icon pressed boi"),
+                     ),
+                  ),
+
+
+                 ]
+              )
+            ]
+      ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type:  BottomNavigationBarType.fixed,
