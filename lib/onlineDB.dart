@@ -1,5 +1,47 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+/*
+TODO 1: Update user classes when they sign and show information according to uid
+
+
+ */
+
+// This updates when user clicks sign into google and show's their UID
+class theUser extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+        stream: authService.user ,
+        builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
+          if(!snapshot.hasData)
+            return Text('Loading');
+          return Text(snapshot.data.uid);
+        }
+    );
+  }
+}
+
+// Not working
+// Testing to see if I can stream information after the user logs in
+class getUE extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance.collection('users1').where('uid', isEqualTo: theUser()).snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if(!snapshot.hasData)
+            return Text('Loading');
+//       final userDocument = snapshot.data.documents[1];
+//       return new Text(userDocument.toString());
+        }
+
+    );
+  }
+}
+
 
 
 //Class for userEnergy
@@ -11,7 +53,7 @@ class getUserEnergy extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return Text('Loading data');
-        return Text(snapshot.data.documents[0]['Energy'].toString());
+        return Text(snapshot.data.documents[1]['Energy'].toString());
       },
     );
   }
@@ -48,35 +90,4 @@ class GetUserUnits extends StatelessWidget {
       },
     );
   }
-
 }
-
-//// Generates the list of Units into a card view
-//class UnitList extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return StreamBuilder<QuerySnapshot>(
-//      stream: Firestore.instance.collection('users').snapshots(),
-//      builder: (BuildContext context,
-//          AsyncSnapshot<QuerySnapshot> snapshot) {
-//        switch (snapshot.connectionState) {
-//          case ConnectionState.waiting:
-//            return new Center(child: new CircularProgressIndicator());
-//          default:
-//            return new ListView.builder(
-//                itemCount: snapshot.data.documents.length,
-//                itemBuilder: (context, int) {
-//                  return Container(
-//                      child: Column(
-//                        children: <Widget>[
-//                          Text(snapshot.data.documents[int]['userUnits'].toString())
-//                        ],
-//                      )
-//                  );
-//                }
-//            );
-//        }
-//      },
-//    );
-//  }
-//}

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'auth.dart';
 
-// NOT IMPLEMENTED
 
 class MyApp extends StatelessWidget {
   @override

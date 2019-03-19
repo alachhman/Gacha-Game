@@ -13,7 +13,7 @@ class MainScreen extends StatefulWidget {
 class _HomeState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    PlaceholderWidget(Colors.green),
+    PlaceHolderWidget(),
     TeamScreenWidget(),
     PlayScreenWidget(),
     SummonScreenWidget(),
