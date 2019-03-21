@@ -3,6 +3,7 @@ import 'SummonScreen.dart';
 import 'PlayScreen.dart';
 import 'TeamScreen.dart';
 import 'PlaceholderWidget.dart';
+import 'HomeScreen.dart';
 class MainScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -13,7 +14,7 @@ class MainScreen extends StatefulWidget {
 class _HomeState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    PlaceholderWidget(Colors.green),
+    HomeScreenWidget(),
     TeamScreenWidget(),
     PlayScreenWidget(),
     SummonScreenWidget(),
