@@ -171,15 +171,17 @@ class TeamScreenWidget extends StatelessWidget {
                   margin: EdgeInsets.all(10),
                   child: Image.asset(value),
                 ),
-                VerticalDivider(
-                  width: 2,
+                Container(
+                  height: 149,
+                  width: 0.5,
                   color: Colors.black,
+                  margin: const EdgeInsets.only(left: 10.0, right: 10.0),
                 ),
                 Container(
                   child: Row(
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.all(10),
+                        margin: EdgeInsets.fromLTRB(6, 10, 10, 10),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: <Widget>[
