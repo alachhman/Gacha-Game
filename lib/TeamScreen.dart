@@ -88,7 +88,7 @@ class TeamScreenWidget extends StatelessWidget {
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
           children: _generateGridItems().map((String value) {
-            return _displayGridItem(value);
+            return _displayGridItem(value, context);
           }).toList()),
     );
 
@@ -111,15 +111,219 @@ class TeamScreenWidget extends StatelessWidget {
   }
 
 
-  Widget _displayGridItem(String value) {
-    return new Card (
-      margin: new EdgeInsets.all(5.0),
-      color: Colors.blue,
-      child: new Image.asset(value),
-      elevation: 5,
+  Widget _displayGridItem(String value, BuildContext context) {
+    return new GestureDetector(
+      onDoubleTap: (){
+        showDialog(
+          context: context,
+          child: UnitInfoCard(value)
+        );
+      },
+      child: new Card (
+        margin: new EdgeInsets.all(5.0),
+        color: Colors.blue,
+        child: new Image.asset(value),
+        elevation: 5,
+      ),
     );
   }
 
+  Widget UnitInfoCard(String value){
+    String unitName = value.substring(value.indexOf("/",0)+1,value.indexOf(".",0));
+    int unitATK = 0;
+    int unitDEF = 0;
+    int unitSPD = 0;
+    return Card(
+      //color: Colors.grey,
+      elevation: 20,
+      margin: EdgeInsets.fromLTRB(70, 220, 70, 210),
+      shape: BeveledRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child:
+        Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(5),
+                  child:RichText(
+                    text: TextSpan(
+                      text: unitName,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black
+                      ),
+                    ),
+                  ) ,
+                ),
+              ],
+            ),
+            Divider(
+              height: 2,
+              color: Colors.black,
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Image.asset(value),
+                ),
+                VerticalDivider(
+                  width: 2,
+                  color: Colors.black,
+                ),
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            RichText(
+                                text: TextSpan(
+                                  text: "ATK:   ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.black
+                                  ),
+                                )
+                            ),
+                            RichText(
+                                text: TextSpan(
+                                  text: "DEF:   ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.black
+                                  ),
+                                )
+                            ),
+                            RichText(
+                                text: TextSpan(
+                                  text: "SPD:   ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.black
+                                  ),
+                                )
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            Text(unitATK.toString()),
+                            Text(unitDEF.toString()),
+                            Text(unitSPD.toString()),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Divider(
+              height: 2,
+              color: Colors.black,
+            ),
+            Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: 
+                    Row(
+                      children: <Widget>[
+                        Image.asset("assets/skillIcons/attackBuff.png"),
+                        Column(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.all(5),
+                              child:RichText(
+                                text: TextSpan(
+                                  text: 'Atk +20%',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.black
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5),
+                              child:RichText(
+                                text: TextSpan(
+                                  text: 'Atk +20% for 10 seconds.',
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.black
+                                  ),
+                                ),
+                              ) ,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                ),
+                Divider(
+                  height: 2,
+                  color: Colors.black,
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child:
+                  Row(
+                    children: <Widget>[
+                      Image.asset("assets/skillIcons/windBlast.png"),
+                      Column(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.all(5),
+                            child:RichText(
+                              text: TextSpan(
+                                text: 'Wind Blast',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: Colors.black
+                                ),
+                              ),
+                            ) ,
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(5),
+                            child:RichText(
+                              text: TextSpan(
+                                text: 'Minor wind damage per tick.',
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.black
+                                ),
+                              ),
+                            ) ,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+    );
+  }
 // Note: Placeholder method to generate grid data
   List<String> _generateGridItems() {
     List<String> gridItems = new List<String>();

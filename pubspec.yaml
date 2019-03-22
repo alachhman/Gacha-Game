@@ -65,6 +65,8 @@ flutter:
     - assets/backgrounds/world2BG.PNG
     - assets/backgrounds/world3BG.PNG
     - assets/bannerimages/banner1.png
+    - assets/skillIcons/attackBuff.png
+    - assets/skillIcons/windBlast.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
