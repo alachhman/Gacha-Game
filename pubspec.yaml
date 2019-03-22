@@ -58,8 +58,8 @@ flutter:
     - assets/images/icons/boop.png
     - assets/images/icons/dagger.png
     - assets/backgrounds/summonBackground.PNG
-    - assets/cherche.png
-    - assets/chrom.png
+    - assets/Cherche.png
+    - assets/Chrom.png
     - assets/gui/star.png
     - assets/backgrounds/world1BG.PNG
     - assets/backgrounds/world2BG.PNG
@@ -67,6 +67,8 @@ flutter:
     - assets/bannerimages/banner1.png
     - assets/skillIcons/attackBuff.png
     - assets/skillIcons/windBlast.png
+    - assets/gui/sabre.png
+    - assets/gui/wind.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

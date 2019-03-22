@@ -129,14 +129,16 @@ class TeamScreenWidget extends StatelessWidget {
   }
 
   Widget UnitInfoCard(String value){
-    String unitName = value.substring(value.indexOf("/",0)+1,value.indexOf(".",0));
+    String unitNameTemp = value.substring(value.indexOf("/",0)+1,value.indexOf(".",0));
+    String firstLetter = unitNameTemp.substring(0,1).toUpperCase();
+    String unitName = firstLetter + unitNameTemp.substring(1, unitNameTemp.length);
     int unitATK = 0;
     int unitDEF = 0;
     int unitSPD = 0;
     return Card(
       //color: Colors.grey,
       elevation: 20,
-      margin: EdgeInsets.fromLTRB(70, 220, 70, 210),
+      margin: EdgeInsets.fromLTRB(70, 220, 70, 157),
       shape: BeveledRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
@@ -175,62 +177,75 @@ class TeamScreenWidget extends StatelessWidget {
                   height: 149,
                   width: 0.5,
                   color: Colors.black,
-                  margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  margin: const EdgeInsets.only(right: 10.0),
                 ),
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.fromLTRB(6, 10, 10, 10),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            RichText(
-                                text: TextSpan(
-                                  text: "ATK:   ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Colors.black
-                                  ),
-                                )
+                Column(
+                  children: <Widget>[
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 10, 10, 10),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                RichText(
+                                    text: TextSpan(
+                                      text: "ATK: ",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.black
+                                      ),
+                                    )
+                                ),
+                                RichText(
+                                    text: TextSpan(
+                                      text: "DEF: ",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.black
+                                      ),
+                                    )
+                                ),
+                                RichText(
+                                    text: TextSpan(
+                                      text: "SPD: ",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.black
+                                      ),
+                                    )
+                                ),
+                              ],
                             ),
-                            RichText(
-                                text: TextSpan(
-                                  text: "DEF:   ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Colors.black
-                                  ),
-                                )
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                Text(unitATK.toString()),
+                                Text(unitDEF.toString()),
+                                Text(unitSPD.toString()),
+                              ],
                             ),
-                            RichText(
-                                text: TextSpan(
-                                  text: "SPD:   ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Colors.black
-                                  ),
-                                )
-                            ),
-                          ],
-                        ),
+                          )
+                        ],
                       ),
-                      Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Text(unitATK.toString()),
-                            Text(unitDEF.toString()),
-                            Text(unitSPD.toString()),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 3, 0),
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset("assets/gui/wind.png"),
+                          Image.asset("assets/gui/sabre.png"),
+                        ],
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
@@ -319,6 +334,27 @@ class TeamScreenWidget extends StatelessWidget {
                       )
                     ],
                   ),
+                )
+              ],
+            ),
+            Divider(
+              height: 2,
+              color: Colors.black,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("Enhance"),
+                  onPressed: (){
+                    //enhance dialog box method call here
+                  },
+                ),
+                RaisedButton(
+                  child: Text("Evolve"),
+                  onPressed: (){
+                    //evolve dialog box method call here
+                  },
                 )
               ],
             )
