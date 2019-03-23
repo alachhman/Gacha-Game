@@ -2,7 +2,6 @@ class Unit{
   final String name;
   final String elem;
   final String wep;
-  final String curExp;
   final String sOneName;
   final String sOneDesc;
   final String sTwoName;
@@ -19,7 +18,6 @@ class Unit{
     this.name,
     this.elem,
     this.wep,
-    this.curExp,
     this.sOneName,
     this.sOneDesc,
     this.sTwoName,
@@ -38,7 +36,6 @@ class Unit{
       name: json['name'],
       elem: json['elem'],
       wep: json['wep'],
-      curExp: json['curExp'].toString(),
       sOneName: json['sOneName'],
       sOneDesc: json['sOneDesc'],
       sTwoName: json['sTwoName'],
