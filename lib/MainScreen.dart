@@ -3,7 +3,7 @@ import 'SummonScreen.dart';
 import 'PlayScreen.dart';
 import 'TeamScreen.dart';
 import 'PlaceholderWidget.dart';
-
+import 'HomeScreen.dart';
 class MainScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -14,7 +14,7 @@ class MainScreen extends StatefulWidget {
 class _HomeState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    PlaceholderWidget(Colors.green),
+    HomeScreenWidget(),
     TeamScreenWidget(),
     PlayScreenWidget(),
     SummonScreenWidget(),
@@ -23,26 +23,22 @@ class _HomeState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-            elevation: 10.0,
-            actions: [
-              new Stack(
-                children: <Widget>[
-                Container(
-                  color: Colors.red,
-                  width: 411,
-                  height: 56,
-                  child: new IconButton(
-                    icon: Icon(Icons.settings),
-                    alignment: Alignment.center,
-                    onPressed: () => print("icon pressed boi"),
-                     ),
-                  ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80.0), // here the desired height
+        child: AppBar(
+          flexibleSpace:
+          Container(
+              height: 80,
+              alignment: Alignment.bottomCenter,
+              decoration: BoxDecoration(
 
-
-                 ]
+                  image: DecorationImage(
+                    image: AssetImage("assets/gui/appbar.png"),
+                    fit: BoxFit.fill,
+                  )
               )
-            ]
+          ),
+        ),
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

@@ -1,0 +1,57 @@
+[
+	{
+		"name":"chrom",
+		"elem":"wind",
+		"wep":"sabre",
+		"curExp":0,
+		"sOneName":"ATK Up",
+		"sOneDesc":"ATK +20% for 10 seconds",
+		"sTwoName":"Wind Blast",
+		"sTwoDesc":"Minor wind damage per tick",
+		"ATK_g":6,
+		"DEF_g":2,
+		"SPD_g":3,
+		"HP_g":5,
+		"ATK_b":6,
+		"DEF_b":4,
+		"SPD_b":5,
+		"HP_b": 100
+	},
+	{
+		"name":"cherche",
+		"elem":"dark",
+		"wep":"axe",
+		"curExp":0,
+		"sOneName":"DEF Up",
+		"sOneDesc":"DEF +40% for 5 seconds",
+		"sTwoName":"Lunge",
+		"sTwoDesc":"Jumps forward dealing dark damage",
+		"ATK_g":3,
+		"DEF_g":5,
+		"SPD_g":4,
+		"HP_g":7,
+		"ATK_b":5,
+		"DEF_b":6,
+		"SPD_b":6,
+		"HP_b": 100
+	},
+	{
+		"name":"ayaka",
+		"elem":"light",
+		"wep":"staff",
+		"curExp":0,
+		"sOneName":"Heal",
+		"sOneDesc":"Restore 250hp to allies",
+		"sTwoName":"More-Heal",
+		"sTwoDesc":"Restore 500hp to allies",
+		"ATK_g":2,
+		"DEF_g":4,
+		"SPD_g":6,
+		"HP_g":3,
+		"ATK_b":4,
+		"DEF_b":5,
+		"SPD_b":6,
+		"HP_b": 100
+	}
+]
+	

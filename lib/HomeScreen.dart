@@ -6,16 +6,38 @@ class HomeScreenWidget extends StatelessWidget {
 
   Widget build(BuildContext context) {
       return Scaffold(
-      body: newsCard()// put fucking widgets here,
+      body: Foundation()// put fucking widgets here,
     );
   }
 
-  Widget newsCard(){
-    return Card(
-
+  Widget Foundation(){
+    return Container(
+      color: Colors.white54,
+      height: double.maxFinite,
+      child: new Stack(
+        //alignment:new Alignment(x, y)
+        children: <Widget>[
+          new Positioned(
+            child: new Align(
+              alignment: FractionalOffset.topCenter,
+              //
+              //replace this child with top banner code
+              //
+              child: Text("hello"),
+            ),
+          ),
+          new Positioned(
+            child: new Align(
+                alignment: FractionalOffset.bottomCenter,
+                //
+                //replace this child with bottom banner code
+                //
+                child: Text("Hello")
+            ),
+          )
+        ],
+      ),
     );
-
-
-    }
-  } //stlss widget
+  }
+} //stlss widget
 
