@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:jfinalproject/database_helper.dart';
-
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
+import 'package:jfinalproject/Unit.dart';
 
 class TeamScreenWidget extends StatelessWidget {
+  final int unitCountInJson = 3;
   List<String> unitPool=[];
   List<String> tempPool=[];
+  List<Unit> units = new List();
   final dbHelper = DatabaseHelper.instance;
   Widget build(BuildContext context) {
     Widget team = new Column(
@@ -127,11 +132,30 @@ class TeamScreenWidget extends StatelessWidget {
       ),
     );
   }
-
+  Future<String> _loadUnitFile() async {
+    return await rootBundle.loadString('assets/info/units.json');
+  }
+  Future loadUnit() async {
+    String jsonString = await _loadUnitFile();
+    final jsonResponse = json.decode(jsonString);
+    for(int i = 0; i < unitCountInJson; i++){
+      Unit unit = new Unit.fromJson(jsonResponse[i]);
+      units.add(unit);
+      print(unit.name + " added");
+    }
+    return units;
+  }
   Widget UnitInfoCard(String value){
+    loadUnit();
+    Unit unitBeingViewed = units[0];
     String unitNameTemp = value.substring(value.indexOf("/",0)+1,value.indexOf(".",0));
     String firstLetter = unitNameTemp.substring(0,1).toUpperCase();
     String unitName = firstLetter + unitNameTemp.substring(1, unitNameTemp.length);
+    for(final u in units){
+      if (u.name == unitNameTemp){
+        unitBeingViewed = u;
+      }
+    }
     int unitATK = 0;
     int unitDEF = 0;
     int unitSPD = 0;
@@ -240,8 +264,8 @@ class TeamScreenWidget extends StatelessWidget {
                       margin: EdgeInsets.fromLTRB(0, 0, 3, 0),
                       child: Column(
                         children: <Widget>[
-                          Image.asset("assets/gui/wind.png"),
-                          Image.asset("assets/gui/sabre.png"),
+                          Image.asset("assets/gui/" + unitBeingViewed.elem + ".png"),
+                          Image.asset("assets/gui/" + unitBeingViewed.wep + ".png"),
                         ],
                       ),
                     ),
@@ -260,14 +284,14 @@ class TeamScreenWidget extends StatelessWidget {
                   child: 
                     Row(
                       children: <Widget>[
-                        Image.asset("assets/skillIcons/attackBuff.png"),
+                        Image.asset("assets/skillIcons/" + unitBeingViewed.sOneName +".png"),
                         Column(
                           children: <Widget>[
                             Container(
                               margin: EdgeInsets.all(5),
                               child:RichText(
                                 text: TextSpan(
-                                  text: 'Atk +20%',
+                                  text: unitBeingViewed.sOneName,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 12,
@@ -280,7 +304,7 @@ class TeamScreenWidget extends StatelessWidget {
                               margin: EdgeInsets.all(5),
                               child:RichText(
                                 text: TextSpan(
-                                  text: 'Atk +20% for 10 seconds.',
+                                  text: unitBeingViewed.sOneDesc,
                                   style: TextStyle(
                                       fontSize: 10,
                                       color: Colors.black
@@ -302,14 +326,14 @@ class TeamScreenWidget extends StatelessWidget {
                   child:
                   Row(
                     children: <Widget>[
-                      Image.asset("assets/skillIcons/windBlast.png"),
+                      Image.asset("assets/skillIcons/" + unitBeingViewed.sTwoName +".png"),
                       Column(
                         children: <Widget>[
                           Container(
                             margin: EdgeInsets.all(5),
                             child:RichText(
                               text: TextSpan(
-                                text: 'Wind Blast',
+                                text: unitBeingViewed.sTwoName,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 12,
@@ -322,7 +346,7 @@ class TeamScreenWidget extends StatelessWidget {
                             margin: EdgeInsets.all(5),
                             child:RichText(
                               text: TextSpan(
-                                text: 'Minor wind damage per tick.',
+                                text: unitBeingViewed.sTwoDesc,
                                 style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.black

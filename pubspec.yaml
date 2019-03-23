@@ -59,6 +59,7 @@ flutter:
     - assets/backgrounds/
     - assets/bannerimages/
     - assets/skillIcons/
+    - assets/info/
     - assets/cherche.png
     - assets/chrom.png
     - assets/ayaka.png
