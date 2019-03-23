@@ -13,7 +13,7 @@ class SummonScreenWidget extends StatelessWidget {
     ["assets/bannerimages/banner1.png","Banner3"],
   ];
   final List<String> multiResults = [];
-  final List<String> pool = ["assets/cherche.png","assets/chrom.png"];
+  final List<String> pool = ["assets/cherche.png","assets/chrom.png","assets/ayaka.png"];
   bool isMulti = false;
   Widget build(BuildContext context) {
     return Scaffold(
