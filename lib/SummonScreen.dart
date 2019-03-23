@@ -127,14 +127,12 @@ class SummonScreenWidget extends StatelessWidget {
   }
   void _insert(String name, String sprite, int count) async {
     // row to insert
-    for(int i = 0; i > count; i++){
       Map<String, dynamic> row = {
         DatabaseHelper.columnName : 'name',
         DatabaseHelper.columnSprite  : sprite
       };
       final id = await dbHelper.insert(row);
       print('inserted row id: $id');
-    }
   }
   Card gachaResults(int count){
     Random rand = new Random();

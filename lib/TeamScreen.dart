@@ -367,7 +367,8 @@ class TeamScreenWidget extends StatelessWidget {
     List<String> gridItems = new List<String>();
     for (int i = 0; i < unitPool.length; i++) {
       print(unitPool[i]);
-      String toAdd = unitPool[i].substring(26,unitPool[i].length-1);
+      String toAdd = unitPool[i].substring(unitPool[i].indexOf("assets/",0),unitPool[i].length-1);
+      print(toAdd);
       gridItems.add(toAdd);
     }
     if(unitPool.length == 0) {
