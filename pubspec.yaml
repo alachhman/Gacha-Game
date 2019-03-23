@@ -54,21 +54,13 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   assets:
-    - assets/images/icons/sword.png
-    - assets/images/icons/boop.png
-    - assets/images/icons/dagger.png
-    - assets/backgrounds/summonBackground.PNG
-    - assets/Cherche.png
-    - assets/Chrom.png
-    - assets/gui/star.png
-    - assets/backgrounds/world1BG.PNG
-    - assets/backgrounds/world2BG.PNG
-    - assets/backgrounds/world3BG.PNG
-    - assets/bannerimages/banner1.png
-    - assets/skillIcons/attackBuff.png
-    - assets/skillIcons/windBlast.png
-    - assets/gui/sabre.png
-    - assets/gui/wind.png
+    - assets/images/icons/
+    - assets/gui/
+    - assets/backgrounds/
+    - assets/bannerimages/
+    - assets/skillIcons/
+    - assets/cherche.png
+    - assets/chrom.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
