@@ -11,10 +11,11 @@ class getUserLevel extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return Text('Loading data');
-        return Text('Level' + snapshot.data.documents[2]['Level'].toString(),
+        return Text(snapshot.data.documents[2]['Level'].toString(),
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          color: Colors.black
+          color: Colors.black,
+          fontSize: 24,
         ),);
       },
     );
@@ -29,7 +30,7 @@ class getUserEmeralis extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return Text('Loading data');
-        return Text('Emeralis' + snapshot.data.documents[2]['Emeralis'].toString(),
+        return Text(snapshot.data.documents[2]['Emeralis'].toString(),
           style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black
@@ -48,10 +49,11 @@ class getUserName extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return Text('Loading data');
-        return Text('Username' + snapshot.data.documents[2]['Name'].toString(),
+        return Text(snapshot.data.documents[2]['Name'].toString(),
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          color: Colors.black
+          color: Colors.black,
+          fontSize: 16,
         ),);
       },
     );
@@ -66,7 +68,7 @@ class getUserGold extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return Text('Loading data');
-        return Text('Gold: ' + snapshot.data.documents[2]['Gold'].toString(),
+        return Text(snapshot.data.documents[2]['Gold'].toString(),
           style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.black

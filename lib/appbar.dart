@@ -31,7 +31,7 @@ class AppBarWidget extends StatelessWidget {
                   children: <Widget>[
                     Positioned(
                       child: new Align(
-                        alignment:  Alignment(-.92,-.57),
+                        alignment:  Alignment(-.60,0),
                         //
                         //USER INFORMATION
                         //
@@ -40,7 +40,7 @@ class AppBarWidget extends StatelessWidget {
                     ),
                    Positioned(
                       child: Align(
-                          alignment: Alignment(-.92,.57),
+                          alignment: Alignment(-.92,0),
                           //
                           //LEVEL INFO STUFF
                           //
@@ -49,7 +49,7 @@ class AppBarWidget extends StatelessWidget {
                     ),
                     Positioned(
                       child: new Align(
-                        alignment: Alignment(.53,-.55),
+                        alignment: Alignment(.34,-.49),
                         //
                         //PREMIUM CURRENCY
                         //
@@ -58,7 +58,7 @@ class AppBarWidget extends StatelessWidget {
                     ),
                     Positioned(
                       child: new Align(
-                        alignment: Alignment(.49,.57),
+                        alignment: Alignment(.40,.50),
                         //
                         //GOLD
                         //

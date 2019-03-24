@@ -29,7 +29,11 @@ class _HomeState extends State<MainScreen> {
          child: AppBarWidget(),
       ),
       body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: new Theme(
+        data: Theme.of(context).copyWith(
+        canvasColor: const Color(0xFF1F2041)
+        ),
+        child: BottomNavigationBar(
         type:  BottomNavigationBarType.fixed,
         fixedColor: Colors.black,
         //double iconSize: 24.0,
@@ -37,23 +41,48 @@ class _HomeState extends State<MainScreen> {
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
+            icon: Icon(Icons.home,
+                color: Color(0xFF4B3F72),
+            ),
+            title: Text('Home',
+              style: TextStyle(
+                color: Colors.white
+              )
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Team'),
+            icon: Icon(Icons.person,
+              color: Color(0xFF4B3F72),
+            ),
+            title: Text('Team',
+                style: TextStyle(
+                color: Colors.white
+            )
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.colorize),
-            title: Text('Play'),
+            icon: Icon(Icons.colorize,
+              color: Color(0xFF4B3F72),
+            ),
+            title: Text('Play',
+                style: TextStyle(
+                color: Colors.white
+                )
+            ),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_add),
-              title: Text('Summon')
+              icon: Icon(Icons.person_add,
+                color: Color(0xFF4B3F72),
+              ),
+              title: Text('Summon',
+                  style: TextStyle(
+                  color: Colors.white
+                  )
+              )
           )
         ],
       ),
+    )
     );
   }
 
