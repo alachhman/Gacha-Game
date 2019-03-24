@@ -6,7 +6,10 @@ class AppBarWidget extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _AppBar()// put fucking widgets here,
+        appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80.0), // here the desired height
+          child: _AppBar()// put fucking widgets here,
+    ),
     );
   }
 
