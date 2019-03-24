@@ -24,46 +24,66 @@ class AppBarWidget extends StatelessWidget {
               ),
               Container(
                 height: 80,
-                alignment: Alignment.bottomCenter,
-                child:Row( //row for text of user info
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children:[
-                    Column( //left side
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text('username: ' + 'speralta',
+                alignment: Alignment.center,
+                child: Stack(
+                  //alignment:new Alignment(x, y)
+                  children: <Widget>[
+                    Positioned(
+                      child: new Align(
+                        alignment:  Alignment(-.92,-.57),
+                        //
+                        //USER INFORMATION
+                        //
+                        child: Text('username: ' + 'speralta',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black
                           ),
-
                         ),
-                        //      Spacer(),
-                        Text('level: ' + '10',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black
-                            )),
-                      ],
+                      ),
                     ),
-                    Spacer(),
-                    Column( //right
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children:[
-                          Text('diamonds: ' + '50',
+                   Positioned(
+                      child: Align(
+                          alignment: Alignment(-.92,.57),
+                          //
+                          //LEVEL INFO STUFF
+                          //
+                          child: Text('level: ' + '10',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black
                               )
-                          ),
-                          //     Spacer(),
-                          Text('gold: ' + 'reeee',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black
-                              )),
-                        ]
-                    )
+                          )
+                      ),
+                    ),
+                    Positioned(
+                      child: new Align(
+                        alignment: Alignment(.53,-.55),
+                        //
+                        //PREMIUM CURRENCY
+                        //
+                        child: Text('Emeralis: ' + '50',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black
+                            )
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      child: new Align(
+                        alignment: Alignment(.49,.57),
+                        //
+                        //GOLD
+                        //
+                        child: Text('gold: ' + 'reeee',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black
+                            )
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 decoration: BoxDecoration(
