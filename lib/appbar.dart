@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'onlineDB.dart';
 
 class AppBarWidget extends StatelessWidget {
   AppBarWidget();
@@ -34,12 +35,7 @@ class AppBarWidget extends StatelessWidget {
                         //
                         //USER INFORMATION
                         //
-                        child: Text('username: ' + 'speralta',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black
-                          ),
-                        ),
+                        child: getUserName(),
                       ),
                     ),
                    Positioned(
@@ -48,12 +44,7 @@ class AppBarWidget extends StatelessWidget {
                           //
                           //LEVEL INFO STUFF
                           //
-                          child: Text('level: ' + '10',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black
-                              )
-                          )
+                          child: getUserLevel(),
                       ),
                     ),
                     Positioned(
@@ -62,12 +53,7 @@ class AppBarWidget extends StatelessWidget {
                         //
                         //PREMIUM CURRENCY
                         //
-                        child: Text('Emeralis: ' + '50',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black
-                            )
-                        ),
+                        child: getUserEmeralis()
                       ),
                     ),
                     Positioned(
@@ -76,12 +62,7 @@ class AppBarWidget extends StatelessWidget {
                         //
                         //GOLD
                         //
-                        child: Text('gold: ' + 'reeee',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black
-                            )
-                        ),
+                        child: getUserGold(),
                       ),
                     ),
                   ],
