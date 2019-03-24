@@ -27,6 +27,12 @@ class _HomeState extends State<MainScreen> {
         preferredSize: Size.fromHeight(80.0), // here the desired height
         child: AppBar(
           flexibleSpace:
+              Column(
+                children:[
+                  Container( //container for notif bar, make this change colors
+                    height: 24,
+                    color: Colors.blue,
+                  ),
           Container(
               height: 80,
               alignment: Alignment.bottomCenter,
@@ -72,6 +78,8 @@ class _HomeState extends State<MainScreen> {
               )
               ,
           ),
+          ]
+        ),
         ),
       ),
       body: _children[_currentIndex],

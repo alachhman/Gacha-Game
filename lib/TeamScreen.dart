@@ -42,19 +42,19 @@ class TeamScreenWidget extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.all(8.0),
-                  color: Colors.red,
+                  color: Colors.yellowAccent,
                   width: 135.0,
                   height:150.0,
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
-                  color: Colors.blue,
+                  color: Colors.lightBlueAccent,
                   width: 135.0,
                   height:150.0,
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
-                  color: Colors.green,
+                  color: Colors.pinkAccent,
                   width: 135.0,
                   height:150.0,
                 )
@@ -126,7 +126,7 @@ class TeamScreenWidget extends StatelessWidget {
       },
       child: new Card (
         margin: new EdgeInsets.all(5.0),
-        color: Colors.blue,
+        color: Colors.lightBlueAccent,
         child: new Image.asset(value),
         elevation: 5,
       ),
