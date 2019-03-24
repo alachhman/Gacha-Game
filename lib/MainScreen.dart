@@ -34,12 +34,14 @@ class _HomeState extends State<MainScreen> {
                 children:[
                   Column( //left side
                     children: [
-
+                      Text('username: ' + 'speralta'),
+                      Text('level: ' + '10'),
                     ],
                   ),
                   Column( //right
                     children:[
-
+                      Text('diamonds ' + '50'),
+                      Text('gold' + 'reeee'),
                     ]
                   )
                 ],
