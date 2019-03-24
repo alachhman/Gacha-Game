@@ -34,14 +34,31 @@ class _HomeState extends State<MainScreen> {
                 children:[
                   Column( //left side
                     children: [
-                      Text('username: ' + 'speralta'),
-                      Text('level: ' + '10'),
+                      Text('username: ' + 'speralta',
+                         style: TextStyle(
+                             fontWeight: FontWeight.bold,
+                             color: Colors.black
+                         ),
+                      ),
+                      Text('level: ' + '10',
+                          style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+                      )),
                     ],
                   ),
                   Column( //right
                     children:[
-                      Text('diamonds ' + '50'),
-                      Text('gold' + 'reeee'),
+                      Text('diamonds ' + '50',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black
+                          )),
+                      Text('gold' + 'reeee',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black
+                          )),
                     ]
                   )
                 ],
