@@ -31,21 +31,25 @@ class _HomeState extends State<MainScreen> {
                 children:[
                   Container( //container for notif bar, make this change colors
                     height: 24,
-                    color: Colors.blue,
+                    color: Colors.white,
                   ),
           Container(
               height: 80,
               alignment: Alignment.bottomCenter,
               child:Row( //row for text of user info
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children:[
                   Column( //left side
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text('username: ' + 'speralta',
                          style: TextStyle(
                              fontWeight: FontWeight.bold,
                              color: Colors.black
                          ),
-                      ),
+
+                   ),
+                //      Spacer(),
                       Text('level: ' + '10',
                           style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -53,14 +57,18 @@ class _HomeState extends State<MainScreen> {
                       )),
                     ],
                   ),
+               Spacer(),
                   Column( //right
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children:[
-                      Text('diamonds ' + '50',
+                      Text('diamonds: ' + '50',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black
-                          )),
-                      Text('gold' + 'reeee',
+                          )
+                      ),
+                 //     Spacer(),
+                      Text('gold: ' + 'reeee',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black
