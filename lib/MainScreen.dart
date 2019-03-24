@@ -30,6 +30,20 @@ class _HomeState extends State<MainScreen> {
           Container(
               height: 80,
               alignment: Alignment.bottomCenter,
+              child:Row( //row for text of user info
+                children:[
+                  Column( //left side
+                    children: [
+
+                    ],
+                  ),
+                  Column( //right
+                    children:[
+
+                    ]
+                  )
+                ],
+              ),
               decoration: BoxDecoration(
 
                   image: DecorationImage(
@@ -37,6 +51,7 @@ class _HomeState extends State<MainScreen> {
                     fit: BoxFit.fill,
                   )
               )
+              ,
           ),
         ),
       ),
