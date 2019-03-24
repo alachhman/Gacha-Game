@@ -164,7 +164,7 @@ class TeamScreenWidget extends StatelessWidget {
     return Card(
       //color: Colors.grey,
       elevation: 20,
-      margin: EdgeInsets.fromLTRB(70, 220, 70, 155),
+      margin: EdgeInsets.fromLTRB(70, 187, 70, 187),
       shape: BeveledRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
