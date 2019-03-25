@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 //Class for userEnergy
-class getUserEnergy extends StatelessWidget {
+class getUserLevel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -11,15 +11,37 @@ class getUserEnergy extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return Text('Loading data');
-        return Text(snapshot.data.documents[0]['Energy'].toString());
+        return Text(snapshot.data.documents[2]['Level'].toString(),
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+          fontSize: 24,
+        ),);
       },
     );
   }
 }
 
+class getUserEmeralis extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('users').snapshots(),
+      builder: (BuildContext context,
+          AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) return Text('Loading data');
+        return Text(snapshot.data.documents[2]['Emeralis'].toString(),
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black
+          ),);
+      },
+    );
+  }
+}
 
 //Class to get userName
-class GetUserName extends StatelessWidget {
+class getUserName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -27,13 +49,37 @@ class GetUserName extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) return Text('Loading data');
-        return Text(snapshot.data.documents[0]['Name'].toString());
+        return Text(snapshot.data.documents[2]['Name'].toString(),
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+          fontSize: 16,
+        ),);
+      },
+    );
+  }
+}
+
+class getUserGold extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('users').snapshots(),
+      builder: (BuildContext context,
+          AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (!snapshot.hasData) return Text('Loading data');
+        return Text(snapshot.data.documents[2]['Gold'].toString(),
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black
+          ),);
       },
     );
   }
 }
 
 
+//Doesnt work yet
 // class to the user's Units
 // Firestore.instance.collection('todo_list').where('status', isEqualTo: false).snapshots,
 class GetUserUnits extends StatelessWidget {
@@ -50,33 +96,3 @@ class GetUserUnits extends StatelessWidget {
   }
 
 }
-
-//// Generates the list of Units into a card view
-//class UnitList extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return StreamBuilder<QuerySnapshot>(
-//      stream: Firestore.instance.collection('users').snapshots(),
-//      builder: (BuildContext context,
-//          AsyncSnapshot<QuerySnapshot> snapshot) {
-//        switch (snapshot.connectionState) {
-//          case ConnectionState.waiting:
-//            return new Center(child: new CircularProgressIndicator());
-//          default:
-//            return new ListView.builder(
-//                itemCount: snapshot.data.documents.length,
-//                itemBuilder: (context, int) {
-//                  return Container(
-//                      child: Column(
-//                        children: <Widget>[
-//                          Text(snapshot.data.documents[int]['userUnits'].toString())
-//                        ],
-//                      )
-//                  );
-//                }
-//            );
-//        }
-//      },
-//    );
-//  }
-//}
