@@ -31,7 +31,7 @@ class EntryItem extends StatelessWidget {
     String worldImage = "";
     switch(root.title){
       case "World 1": worldImage = "assets/backgrounds/world1BG.PNG"; break;
-      case "World 2": worldImage = "assets/backgrounds/world2BG.PNG"; break;
+      case "World 2": worldImage = "assets/backgrounds/world2BG.png"; break;
       case "World 3": worldImage = "assets/backgrounds/world3BG.PNG"; break;
     }
     if (root.children.isEmpty) {
