@@ -12,7 +12,7 @@ class HomeScreenWidget extends StatelessWidget {
 
   Widget Foundation(){
     return Container(
-      color: Colors.redAccent,
+      color: Color(0xFF4B3F72),
       height: 650,
       child: new Stack(
         //alignment:new Alignment(x, y)

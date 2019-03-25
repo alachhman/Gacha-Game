@@ -21,12 +21,16 @@ class SummonScreenWidget extends StatelessWidget {
     );
   }
   Widget bannerList(){
-    return ListView.builder(
+    return Container(
+        height: 650,
+        color: Color(0xFF4B3F72),
+        child: ListView.builder(
       scrollDirection: Axis.vertical,
       itemCount: bannerInfo.length,
       itemBuilder:(context, position){
         return banner(context, position);
       },
+        )
     );
   }
   Card banner(BuildContext context, int position){

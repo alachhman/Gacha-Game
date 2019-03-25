@@ -42,19 +42,19 @@ class TeamScreenWidget extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.all(8.0),
-                  color: Colors.yellowAccent,
+                  color: Color(0xFF5C80BC),
                   width: 135.0,
                   height:150.0,
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
-                  color: Colors.lightBlueAccent,
+                  color: Color(0xFF5C80BC),
                   width: 135.0,
                   height:150.0,
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
-                  color: Colors.pinkAccent,
+                  color: Color(0xFF5C80BC),
                   width: 135.0,
                   height:150.0,
                 )
@@ -97,7 +97,10 @@ class TeamScreenWidget extends StatelessWidget {
           }).toList()),
     );
 
-    Widget body = new Column(
+    Widget body = new Container(
+        height: 650,
+        color: Color(0xFF4B3F72),
+        child: new Column(
       // This makes each child fill the full width of the screen
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
@@ -105,6 +108,7 @@ class TeamScreenWidget extends StatelessWidget {
         team,
         gridSection,
       ],
+      )
     );
 
     return new Scaffold(
@@ -126,7 +130,7 @@ class TeamScreenWidget extends StatelessWidget {
       },
       child: new Card (
         margin: new EdgeInsets.all(5.0),
-        color: Colors.lightBlueAccent,
+        color: Color(0xFF5C80BC),
         child: new Image.asset(value),
         elevation: 5,
       ),
@@ -156,13 +160,11 @@ class TeamScreenWidget extends StatelessWidget {
         unitBeingViewed = u;
       }
     }
-    int unitLVL = 1;
-    int unitHP = (int.parse(unitBeingViewed.HP_b)*(unitLVL * int.parse(unitBeingViewed.HP_g)));
-    int unitATK = (int.parse(unitBeingViewed.ATK_b)*(unitLVL * int.parse(unitBeingViewed.ATK_g)));
-    int unitDEF = (int.parse(unitBeingViewed.DEF_b)*(unitLVL * int.parse(unitBeingViewed.DEF_g)));
-    int unitSPD = (int.parse(unitBeingViewed.SPD_b)*(unitLVL * int.parse(unitBeingViewed.SPD_g)));
+    int unitATK = 0;
+    int unitDEF = 0;
+    int unitSPD = 0;
     return Card(
-      //color: Colors.grey,
+      color: Colors.grey,
       elevation: 20,
       margin: EdgeInsets.fromLTRB(70, 220, 70, 155),
       shape: BeveledRectangleBorder(
@@ -196,26 +198,8 @@ class TeamScreenWidget extends StatelessWidget {
             Row(
               children: <Widget>[
                 Container(
-                  height: 125,
-                  width: 148,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(value),
-                        fit: BoxFit.fill,
-                        alignment: Alignment.topCenter,
-                      )
-                  ),
                   margin: EdgeInsets.all(10),
-                  child: RichText(
-                      text: TextSpan(
-                        text: "Lv. " + unitLVL.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                            color: Colors.black
-                        ),
-                      )
-                  ),
+                  child: Image.asset(value),
                 ),
                 Container(
                   height: 149,
@@ -235,20 +219,10 @@ class TeamScreenWidget extends StatelessWidget {
                               children: <Widget>[
                                 RichText(
                                     text: TextSpan(
-                                      text: "HP: ",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
-                                          color: Colors.black
-                                      ),
-                                    )
-                                ),
-                                RichText(
-                                    text: TextSpan(
                                       text: "ATK: ",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Colors.black
                                       ),
                                     )
@@ -258,7 +232,7 @@ class TeamScreenWidget extends StatelessWidget {
                                       text: "DEF: ",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Colors.black
                                       ),
                                     )
@@ -268,7 +242,7 @@ class TeamScreenWidget extends StatelessWidget {
                                       text: "SPD: ",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Colors.black
                                       ),
                                     )
@@ -281,42 +255,9 @@ class TeamScreenWidget extends StatelessWidget {
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
-                                RichText(
-                                    text: TextSpan(
-                                      text: unitHP.toString(),
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.black
-                                      ),
-                                    )
-                                ),
-                                RichText(
-                                    text: TextSpan(
-                                      text: unitATK.toString(),
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.black
-                                      ),
-                                    )
-                                ),
-                                RichText(
-                                    text: TextSpan(
-                                      text: unitDEF.toString(),
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.black
-                                      ),
-                                    )
-                                ),
-                                RichText(
-                                    text: TextSpan(
-                                      text: unitSPD.toString(),
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.black
-                                      ),
-                                    )
-                                ),
+                                Text(unitATK.toString()),
+                                Text(unitDEF.toString()),
+                                Text(unitSPD.toString()),
                               ],
                             ),
                           )
@@ -441,7 +382,6 @@ class TeamScreenWidget extends StatelessWidget {
                   child: Text("Evolve"),
                   onPressed: (){
                     //evolve dialog box method call here
-                    _delete();
                   },
                 )
               ],
