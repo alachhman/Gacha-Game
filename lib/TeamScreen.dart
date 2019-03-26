@@ -15,25 +15,28 @@ class TeamScreenWidget extends StatelessWidget {
     Widget team = new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0,8,0,0),
+          ),
           Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(8.0),
-                ),
-                RichText(
-                    text: TextSpan(
-                        style: DefaultTextStyle.of(context).style,
-                        children:<TextSpan>[
-                          TextSpan(
-                              text: 'Team:',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              )
-                          ),
-                        ]
-                    )
+                  padding: EdgeInsets.fromLTRB(16,4,0,4),
+                  child: RichText(
+                      text: TextSpan(
+                          style: DefaultTextStyle.of(context).style,
+                          children:<TextSpan>[
+                            TextSpan(
+                                text: 'Team:',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                )
+                            ),
+                          ]
+                      )
+                  ),
                 ),
               ]
           ),
@@ -59,6 +62,13 @@ class TeamScreenWidget extends StatelessWidget {
                   height:150.0,
                 )
               ]
+          ),
+          Divider(
+            height: 12,
+            color: Colors.white,
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(8,8,0,0),
           ),
           Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -220,6 +230,12 @@ class TeamScreenWidget extends StatelessWidget {
                         ),
                       )
                   ),
+                ),
+                Container(
+                  height: 147,
+                  width: 0.5,
+                  color: Colors.black,
+                  margin: const EdgeInsets.only(right: 10.0),
                 ),
                 Column(
                   children: <Widget>[
