@@ -77,7 +77,6 @@ class AppBarWidget extends StatelessWidget {
                   ],
                 ),
                 decoration: BoxDecoration(
-
                     image: DecorationImage(
                       image: AssetImage("assets/gui/appbar.png"),
                       fit: BoxFit.fill,

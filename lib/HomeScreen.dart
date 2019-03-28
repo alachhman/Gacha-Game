@@ -38,6 +38,6 @@ class HomeScreenWidget extends StatelessWidget {
         ],
       ),
     );
-  }
-} //stlss widget
+  }//Foundation
+}//HomeScreenWidget
 
