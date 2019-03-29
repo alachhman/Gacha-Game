@@ -9,10 +9,14 @@ class PlayScreenWidget extends StatelessWidget {
     );
   }
   Widget stages(BuildContext context){
-    return ListView.builder(
+    return Container(
+        height: 650,
+        color: Color(0xFF4B3F72),
+        child: ListView.builder(
       itemBuilder: (BuildContext context, int index) =>
           EntryItem(data[index]),
       itemCount: data.length,
+        )
     );
   }
 }

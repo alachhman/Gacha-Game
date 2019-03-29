@@ -57,7 +57,7 @@ class getUserLevel extends StatelessWidget {
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.black,
-          fontSize: 24,
+          fontSize: 18,
         ),);
       },
     );

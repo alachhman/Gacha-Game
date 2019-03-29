@@ -40,11 +40,20 @@ class AppBarWidget extends StatelessWidget {
                     ),
                    Positioned(
                       child: Align(
-                          alignment: Alignment(-.92,0),
+                          alignment: Alignment(-.96,.09),
                           //
                           //LEVEL INFO STUFF
                           //
-                          child: getUserLevel(),
+                          child: Container(
+                          //  color: Colors.white,
+                            color: Color(0xFFCDD1C4),
+                            height:30,
+                            width: 26,
+                            child: Align(
+                              alignment:Alignment.center,
+                              child: getUserLevel(),
+                          )
+                        )
                       ),
                     ),
                     Positioned(

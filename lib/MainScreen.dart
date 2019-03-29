@@ -5,6 +5,8 @@ import 'TeamScreen.dart';
 import 'PlaceholderWidget.dart';
 import 'HomeScreen.dart';
 import 'appbar.dart';
+import 'login.dart';
+import 'auth.dart';
 class MainScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
