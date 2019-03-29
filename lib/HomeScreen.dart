@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-
 class HomeScreenWidget extends StatelessWidget {
+
   HomeScreenWidget();
 
 
   Widget build(BuildContext context) {
-      return Scaffold(
-      body: Foundation()// put fucking widgets here,
+    return Scaffold(
+        body: Foundation()// put fucking widgets here,
     );
   }
-
   Widget Foundation(){
     return Container(
       color: Color(0xFF4B3F72),
@@ -19,22 +18,30 @@ class HomeScreenWidget extends StatelessWidget {
         children: <Widget>[
           new Positioned(
             child: new Align(
-              alignment: FractionalOffset.topCenter,
-              //
-              //replace this child with top banner code
-              //
-              child: Text("hello"),
+              alignment: FractionalOffset.topLeft,
+              child: IconButton(
+                  icon: Icon(Icons.mail),
+                  onPressed: null
+              ),
             ),
           ),
           new Positioned(
             child: new Align(
-                alignment: FractionalOffset.bottomCenter,
-                //
-                //replace this child with bottom banner code
-                //
-                child: Text("Hello")
+                alignment: FractionalOffset.topCenter,
+              child: IconButton(
+                  icon: Icon(Icons.cake),
+                  onPressed: null,
+              ),
             ),
-          )
+          ),
+          new Positioned(
+              child: new Align(
+                alignment: FractionalOffset.topRight,
+                child: IconButton(
+                    icon: Icon(Icons.settings),
+                    onPressed: null
+                ),
+              ))
         ],
       ),
     );
