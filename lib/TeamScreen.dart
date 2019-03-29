@@ -5,21 +5,22 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:jfinalproject/Unit.dart';
 final dbHelper = DatabaseHelper.instance;
-List<String> unitList = [];
 class TeamScreenWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => teamScreenState(this,[]);
 }
 class teamScreenState extends State<TeamScreenWidget>{
   List<String> unitPool=[];
-  bool doQuery = true;
+  List<String> unitList = [];
   TeamScreenWidget teamScreenWidget;
   teamScreenState(this.teamScreenWidget, unitList);
   bool isLoaded = false;
   @override
   void initState(){
     super.initState();
+    unitList = [];
     _query();
+    //refreshList();
     loadUnit();
   }
   final int unitCountInJson = 3;
@@ -216,7 +217,6 @@ class teamScreenState extends State<TeamScreenWidget>{
     return units;
   }
   Widget UnitInfoCard(String value){
-    loadUnit();
     Unit unitBeingViewed = units[0];
     String unitNameTemp = value.substring(value.indexOf("/",0)+1,value.indexOf(".",0));
     String firstLetter = unitNameTemp.substring(0,1).toUpperCase();
@@ -234,29 +234,46 @@ class teamScreenState extends State<TeamScreenWidget>{
     return Card(
       //color: Colors.grey,
       elevation: 20,
-      margin: EdgeInsets.fromLTRB(70, 220, 70, 155),
+      margin: EdgeInsets.fromLTRB(70, 220, 70, 130),
       shape: BeveledRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
       child:
       Column(
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Column(
             children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(5),
-                child:RichText(
-                  text: TextSpan(
-                    text: unitName,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.black
-                    ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    child:RichText(
+                      text: TextSpan(
+                        text: unitName,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.black
+                        ),
+                      ),
+                    ) ,
                   ),
-                ) ,
+                ],
               ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset("assets/gui/star.png"),
+                    Image.asset("assets/gui/star.png"),
+                    Image.asset("assets/gui/star.png"),
+                    Image.asset("assets/gui/star.png"),
+                    Image.asset("assets/gui/star.png"),
+                  ],
+                ),
+              )
             ],
           ),
           Divider(
@@ -511,7 +528,7 @@ class teamScreenState extends State<TeamScreenWidget>{
                 child: Text("Evolve"),
                 onPressed: (){
                   //evolve dialog box method call here
-                  //_delete();
+                  _delete();
                 },
               )
             ],
@@ -523,8 +540,9 @@ class teamScreenState extends State<TeamScreenWidget>{
 // Note: Placeholder method to generate grid data
   List<String> _generateGridItems() {
     List<String> gridItems = new List<String>();
-    if(unitList.length == 0 && doQuery) {
+    if(unitList.length == 0) {
       _query();
+      //refreshList();
     }
     for (int i = 0; i < unitList.length/2; i++) {
       String toAdd = unitList[i].substring(unitList[i].indexOf("assets/",0),unitList[i].length-1);
@@ -532,7 +550,13 @@ class teamScreenState extends State<TeamScreenWidget>{
     }
     return gridItems;
   }
+  void refreshList() async{
+    setState(() {
+      unitList = unitList;
+    });
+  }
   void _query() async {
+    unitList = [];
     final allRows = await dbHelper.queryAllRows();
     print('querying all rows');
     allRows.forEach((row) => {
@@ -549,10 +573,6 @@ class teamScreenState extends State<TeamScreenWidget>{
       final rowsDeleted = await dbHelper.delete(id);
       print('deleted $rowsDeleted row(s): row $id');
     }
-
-    setState(() {
-      doQuery = false;
-    });
   }
   /*void _comparitiveQuery() async {
     final id =  await dbHelper.queryRowCount();
@@ -561,7 +581,6 @@ class teamScreenState extends State<TeamScreenWidget>{
         unitPool = tempPool;
     }
   }
-
   void _update() async {
     // row to update
     Map<String, dynamic> row = {
