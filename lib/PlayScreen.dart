@@ -3,65 +3,91 @@ import 'package:flutter/material.dart';
 class PlayScreenWidget extends StatelessWidget {
   PlayScreenWidget();
 
-  final List<String> sendersList = ["Area 1", "Area 2", "Area 3"];
-  final List<String> subjectList = ["Battle 1", "Battle 2", "Battle 3"];
-
   Widget build(BuildContext context) {
     return Scaffold(
-      body: stages(),
+      body: stages(context),
     );
   }
-
-  Widget stages() {
-    return ListView.builder(
-        itemCount: sendersList.length,
-        itemBuilder: (context, position){
-          return InkWell(
-            onTap: (){
-              print("stage tapped");
-            },
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Padding(
-                        padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0),
-                        child:Text(sendersList[position],
-                          style: TextStyle(
-                              fontSize: 22.0, fontWeight: FontWeight.bold),
-                        )
-                    ),
-                    Padding(
-                      padding:
-                      const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(2),
-                          child:Icon(Icons.star_border),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(0.8),
-                          child:Icon(Icons.star_border),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(0.8),
-                          child:Icon(Icons.star_border),
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      height: 2.0,
-                      color: Colors.black,
-                    )
-                  ],
-                )
-              ],
-            ),
-          );
-        }
+  Widget stages(BuildContext context){
+    return Container(
+        height: 650,
+        color: Color(0xFF4B3F72),
+        child: ListView.builder(
+      itemBuilder: (BuildContext context, int index) =>
+          EntryItem(data[index]),
+      itemCount: data.length,
+        )
     );
   }
 }
+class Entry {
+  Entry(this.title, [this.children = const <Entry>[]]);
+
+  final String title;
+  final List<Entry> children;
+}
+class EntryItem extends StatelessWidget {
+  const EntryItem(this.entry);
+
+  final Entry entry;
+
+  Widget _buildTiles(Entry root) {
+    String worldImage = "";
+    switch(root.title){
+      case "World 1": worldImage = "assets/backgrounds/world1BG.PNG"; break;
+      case "World 2": worldImage = "assets/backgrounds/world2BG.png"; break;
+      case "World 3": worldImage = "assets/backgrounds/world3BG.PNG"; break;
+    }
+    if (root.children.isEmpty) {
+      return InkWell(
+        child: ListTile(title: Text(root.title)),
+        onTap: (){
+          print(root.title);
+        },
+      );
+    }
+    return Card(
+      child: Column(
+        children: <Widget>[
+          Image.asset(worldImage,
+            fit: BoxFit.fitWidth
+          ),
+          ExpansionTile(
+              key: PageStorageKey<Entry>(root),
+              title: Text(root.title),
+              children: root.children.map(_buildTiles).toList(),
+            ),
+        ],
+      )
+    );
+  }
+  @override
+  Widget build(BuildContext context) {
+    return _buildTiles(entry);
+  }
+}
+final List<Entry> data = <Entry>[
+  Entry(
+    'World 1',
+    <Entry>[
+      Entry('Level 1'),
+      Entry('Level 2'),
+      Entry('Level 3'),
+    ],
+  ),
+  Entry(
+    'World 2',
+    <Entry>[
+      Entry('Level 1'),
+      Entry('Level 2'),
+    ],
+  ),
+  Entry(
+    'World 3',
+    <Entry>[
+      Entry('Level 1'),
+      Entry('Level 2'),
+      Entry('Level 3'),
+    ],
+  ),
+];

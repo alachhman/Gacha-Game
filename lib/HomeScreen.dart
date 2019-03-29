@@ -1,61 +1,43 @@
 import 'package:flutter/material.dart';
-import 'PlaceholderWidget.dart';
-import 'PlayScreen.dart';
-import 'TeamScreen.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _HomeState();
-  }
-}
+class HomeScreenWidget extends StatelessWidget {
+  HomeScreenWidget();
 
-class _HomeState extends State<HomeScreen> {
-  int _currentIndex = 0;
-  final List<Widget> _children = [
-    TeamScreenWidget(),
-    PlayScreenWidget(),
-    PlaceholderWidget(Colors.blue)
-  ];
 
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.indigo,
-        title: Text("re:"),
-        actions:[
-          new IconButton(
-            icon: new Image.asset('assets/images/icons/boop.png'),
-            onPressed: () => print("icon pressed boi"),
+      return Scaffold(
+      body: Foundation()// put fucking widgets here,
+    );
+  }
+
+  Widget Foundation(){
+    return Container(
+      color: Color(0xFF4B3F72),
+      height: 650,
+      child: new Stack(
+        //alignment:new Alignment(x, y)
+        children: <Widget>[
+          new Positioned(
+            child: new Align(
+              alignment: FractionalOffset.topCenter,
+              //
+              //replace this child with top banner code
+              //
+              child: Text("hello"),
+            ),
           ),
-        ],
-    ),
-      body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTabTapped,
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Team'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.colorize),
-            title: Text('Play'),
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_add),
-              title: Text('Summon')
+          new Positioned(
+            child: new Align(
+                alignment: FractionalOffset.bottomCenter,
+                //
+                //replace this child with bottom banner code
+                //
+                child: Text("Hello")
+            ),
           )
         ],
       ),
     );
   }
+} //stlss widget
 
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-}

@@ -1,10 +1,9 @@
-// This sample shows adding an action to an [AppBar] that opens a shopping cart.
-
 import 'package:flutter/material.dart';
-import 'HomeScreen.dart';
+import 'package:jfinalproject/TeamScreen.dart';
+import 'MainScreen.dart';
+
 
 void main() => runApp(MyApp());
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: MainScreen(),
     );
   }
 }
