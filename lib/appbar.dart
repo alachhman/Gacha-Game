@@ -16,6 +16,7 @@ class AppBarWidget extends StatelessWidget {
 
   Widget _AppBar(){
       return AppBar(
+        automaticallyImplyLeading: false,
         flexibleSpace:
         Column(
             children:[
