@@ -14,7 +14,8 @@
 		"ATK_b":6,
 		"DEF_b":4,
 		"SPD_b":5,
-		"HP_b": 100
+		"HP_b":100,
+		"bRarity":5
 	},
 	{
 		"name":"cherche",
@@ -31,7 +32,8 @@
 		"ATK_b":5,
 		"DEF_b":6,
 		"SPD_b":6,
-		"HP_b": 100
+		"HP_b": 100,
+        "bRarity":5
 	},
 	{
 		"name":"ayaka",
@@ -48,7 +50,8 @@
 		"ATK_b":4,
 		"DEF_b":5,
 		"SPD_b":6,
-		"HP_b": 100
+		"HP_b": 100,
+        "bRarity":5
 	}
 ]
 	
