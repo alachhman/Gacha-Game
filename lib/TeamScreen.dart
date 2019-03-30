@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jfinalproject/database_helper.dart';
+import 'package:jfinalproject/TeamStore.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:jfinalproject/Unit.dart';
 final dbHelper = DatabaseHelper.instance;
+final teamHelper = TeamStore.instance;
 class TeamScreenWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => teamScreenState(this,[]);
@@ -20,8 +22,9 @@ class teamScreenState extends State<TeamScreenWidget>{
     super.initState();
     unitList = [];
     _query();
-    //refreshList();
+    _insert();
     loadUnit();
+    getTeam();
   }
   final int unitCountInJson = 3;
   List<String> tempPool=[];
@@ -29,7 +32,8 @@ class teamScreenState extends State<TeamScreenWidget>{
   bool slot1Full = false;
   bool slot2Full = false;
   bool slot3Full = false;
-  List<String> inTeam = ["","",""];
+  List<String> inTeam = ["0"," "," "," "];
+  List<String> tempInTeam = [];
   Widget build(BuildContext context) {
     Widget team = new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,10 +78,10 @@ class teamScreenState extends State<TeamScreenWidget>{
                           onDoubleTap: (){
                             showDialog(
                               context: context,
-                              child: UnitInfoCard(inTeam[0])
+                              child: UnitInfoCard(inTeam[1])
                             );
                           },
-                          child: Image.asset(inTeam[0]),
+                          child: Image.asset(inTeam[1]),
                           )
                         );
                       },
@@ -85,39 +89,12 @@ class teamScreenState extends State<TeamScreenWidget>{
                         return true;
                       },
                       onAccept: (data) {
+                        _update(inTeam[1], inTeam[2], inTeam[3]);
                         setState(() {
                           slot1Full = true;
-                          inTeam[0] = data;
-                        });
-                      },
-                    )
-                ),
-                Container(
-                    padding: const EdgeInsets.all(8.0),
-                    color: Color(0xFF5C80BC),
-                    width: 135.0,
-                    height:150.0,
-                    child: DragTarget(builder: (context, List<String> candidateData, rejectedData) {
-                      return !slot1Full ? Container() :
-                      Container(
-                          child:GestureDetector(
-                            onDoubleTap: (){
-                              showDialog(
-                                  context: context,
-                                  child: UnitInfoCard(inTeam[1])
-                              );
-                            },
-                            child: Image.asset(inTeam[1]),
-                          )
-                      );
-                    },
-                      onWillAccept: (data) {
-                        return true;
-                      },
-                      onAccept: (data) {
-                        setState(() {
-                          slot2Full = true;
                           inTeam[1] = data;
+                          print(inTeam[1] + " " + inTeam[2] + " " + inTeam[3]);
+
                         });
                       },
                     )
@@ -146,8 +123,40 @@ class teamScreenState extends State<TeamScreenWidget>{
                       },
                       onAccept: (data) {
                         setState(() {
-                          slot3Full = true;
+                          slot2Full = true;
                           inTeam[2] = data;
+                          print(inTeam[1] + " " + inTeam[2] + " " + inTeam[3]);
+                        });
+                      },
+                    )
+                ),
+                Container(
+                    padding: const EdgeInsets.all(8.0),
+                    color: Color(0xFF5C80BC),
+                    width: 135.0,
+                    height:150.0,
+                    child: DragTarget(builder: (context, List<String> candidateData, rejectedData) {
+                      return !slot1Full ? Container() :
+                      Container(
+                          child:GestureDetector(
+                            onDoubleTap: (){
+                              showDialog(
+                                  context: context,
+                                  child: UnitInfoCard(inTeam[3])
+                              );
+                            },
+                            child: Image.asset(inTeam[3]),
+                          )
+                      );
+                    },
+                      onWillAccept: (data) {
+                        return true;
+                      },
+                      onAccept: (data) {
+                        setState(() {
+                          slot3Full = true;
+                          inTeam[3] = data;
+                          print(inTeam[1] + " " + inTeam[2] + " " + inTeam[3]);
                         });
                       },
                     )
@@ -563,6 +572,7 @@ class teamScreenState extends State<TeamScreenWidget>{
                 child: Text("Enhance"),
                 onPressed: (){
                   //enhance dialog box method call here
+                  _deleteTeam();
                 },
               ),
               RaisedButton(
@@ -627,6 +637,35 @@ class teamScreenState extends State<TeamScreenWidget>{
       unitList = unitList;
     });
   }
+  void getTeam() async {
+    final allRows = await teamHelper.queryAllRows();
+    print('querying Team');
+    allRows.forEach((row) => {
+        tempInTeam.add(row.toString()),
+        print(tempInTeam),
+        //print(row)
+    });
+    tempToReal();
+    setState(() {
+      inTeam = inTeam;
+      if(inTeam[1] != " "){
+       slot1Full = true;
+      }
+      if(inTeam[2] != " "){
+        slot2Full = true;
+      }
+      if(inTeam[3] != " "){
+        slot3Full = true;
+      }
+      print(inTeam);
+    });
+  }
+  void tempToReal(){
+    inTeam[0] = tempInTeam[tempInTeam.length].substring(tempInTeam[tempInTeam.length].indexOf("teamID: ",7),tempInTeam[tempInTeam.length].indexOf(", slot1:",0));
+    inTeam[1] = tempInTeam[tempInTeam.length].substring(tempInTeam[tempInTeam.length].indexOf("slot1: ",6),tempInTeam[tempInTeam.length].indexOf(", slot2:",0));
+    inTeam[2] = tempInTeam[tempInTeam.length].substring(tempInTeam[tempInTeam.length].indexOf("slot2: ",6),tempInTeam[tempInTeam.length].indexOf(", slot3:",0));
+    inTeam[3] = tempInTeam[tempInTeam.length].substring(tempInTeam[tempInTeam.length].indexOf("slot3: ",6),tempInTeam[tempInTeam.length].indexOf("}",0));
+  }
   void _delete() async {
     final id = await dbHelper.queryRowCount();
 
@@ -635,21 +674,41 @@ class teamScreenState extends State<TeamScreenWidget>{
       print('deleted $rowsDeleted row(s): row $id');
     }
   }
+  void _deleteTeam() async {
+    final id = await teamHelper.queryRowCount();
+
+    for(int i = 0; i < unitList.length; i ++){
+      final rowsDeleted = await teamHelper.delete(id);
+      print('deleted $rowsDeleted row(s): row $id');
+    }
+  }
+  void _update(String slot1, String slot2, String slot3) async {
+    // row to update
+    Map<String, dynamic> row = {
+      TeamStore.Id : 0,
+      TeamStore.columnSlot1 : slot1,
+      TeamStore.columnSlot2 : slot2,
+      TeamStore.columnSlot3 : slot3,
+    };
+    final rowsAffected = await teamHelper.update(row);
+    print('updated $rowsAffected row(s)');
+  }
+  void _insert() async {
+    // row to insert
+    Map<String, dynamic> row = {
+      TeamStore.columnSlot1 : "1",
+      TeamStore.columnSlot2 : "2",
+      TeamStore.columnSlot3 : "3",
+    };
+    final id = await teamHelper.insert(row);
+    print('inserted row id: $id');
+  }
   /*void _comparitiveQuery() async {
     final id =  await dbHelper.queryRowCount();
     if(unitPool != [] || unitPool != null) {
       if (unitPool != tempPool)
         unitPool = tempPool;
     }
-  }
-  void _update() async {
-    // row to update
-    Map<String, dynamic> row = {
-      DatabaseHelper.columnId   : 1,
-      DatabaseHelper.columnName : ' ',
-      DatabaseHelper.columnSprite  : " "
-    };
-    final rowsAffected = await dbHelper.update(row);
-    print('updated $rowsAffected row(s)');
   }*/
+
 }
