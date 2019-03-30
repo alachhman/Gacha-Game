@@ -79,7 +79,7 @@ class SummonScreenWidget extends StatelessWidget {
                   print("Summon " + position.toString() +  " Pressed");
                   showDialog(
                     context: context,
-                    child: gachaResults(1),
+                    builder: (BuildContext context) => gachaResults(1),
                   );
                 },
               ),
