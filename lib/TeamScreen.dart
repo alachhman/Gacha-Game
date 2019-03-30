@@ -30,19 +30,6 @@ class teamScreenState extends State<TeamScreenWidget>{
   bool slot2Full = false;
   bool slot3Full = false;
   List<String> inTeam = ["","",""];
-  getTarget() => new Container(
-      child: new DragTarget(
-        builder: (BuildContext context, List<String> accepted, rejected){
-
-        },
-        onWillAccept:(data){
-
-        },
-        onAccept: (data) => setState((){
-          slot1Full = true;
-        }),
-      )
-  );
   Widget build(BuildContext context) {
     Widget team = new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -80,37 +67,91 @@ class teamScreenState extends State<TeamScreenWidget>{
                     color: Color(0xFF5C80BC),
                     width: 135.0,
                     height:150.0,
-                    child: DragTarget(
-                      builder: (context, List<String> candidateData, rejectedData){
-                        return slot1Full ? unitListCard(candidateData[0]): Container(
-                          height: 140.0,
-                          width: 130.0,
-                          color: Colors.black,
+                    child: DragTarget(builder: (context, List<String> candidateData, rejectedData) {
+                      return !slot1Full ? Container() :
+                        Container(
+                          child:GestureDetector(
+                          onDoubleTap: (){
+                            showDialog(
+                              context: context,
+                              child: UnitInfoCard(inTeam[0])
+                            );
+                          },
+                          child: Image.asset(inTeam[0]),
+                          )
                         );
                       },
-                      onWillAccept: (data){
-                        print(data[0]);
+                      onWillAccept: (data) {
                         return true;
                       },
-                      onAccept: (data){
-                        slot1Full = true;
-                        inTeam[0] = data[0];
-                        print(data[0]);
+                      onAccept: (data) {
+                        setState(() {
+                          slot1Full = true;
+                          inTeam[0] = data;
+                        });
                       },
                     )
                 ),
                 Container(
-                  padding: const EdgeInsets.all(8.0),
-                  color: Color(0xFF5C80BC),
-                  width: 135.0,
-                  height:150.0,
+                    padding: const EdgeInsets.all(8.0),
+                    color: Color(0xFF5C80BC),
+                    width: 135.0,
+                    height:150.0,
+                    child: DragTarget(builder: (context, List<String> candidateData, rejectedData) {
+                      return !slot1Full ? Container() :
+                      Container(
+                          child:GestureDetector(
+                            onDoubleTap: (){
+                              showDialog(
+                                  context: context,
+                                  child: UnitInfoCard(inTeam[1])
+                              );
+                            },
+                            child: Image.asset(inTeam[1]),
+                          )
+                      );
+                    },
+                      onWillAccept: (data) {
+                        return true;
+                      },
+                      onAccept: (data) {
+                        setState(() {
+                          slot2Full = true;
+                          inTeam[1] = data;
+                        });
+                      },
+                    )
                 ),
                 Container(
-                  padding: const EdgeInsets.all(8.0),
-                  color: Color(0xFF5C80BC),
-                  width: 135.0,
-                  height:150.0,
-                )
+                    padding: const EdgeInsets.all(8.0),
+                    color: Color(0xFF5C80BC),
+                    width: 135.0,
+                    height:150.0,
+                    child: DragTarget(builder: (context, List<String> candidateData, rejectedData) {
+                      return !slot1Full ? Container() :
+                      Container(
+                          child:GestureDetector(
+                            onDoubleTap: (){
+                              showDialog(
+                                  context: context,
+                                  child: UnitInfoCard(inTeam[2])
+                              );
+                            },
+                            child: Image.asset(inTeam[2]),
+                          )
+                      );
+                    },
+                      onWillAccept: (data) {
+                        return true;
+                      },
+                      onAccept: (data) {
+                        setState(() {
+                          slot3Full = true;
+                          inTeam[2] = data;
+                        });
+                      },
+                    )
+                ),
               ]
           ),
           Divider(
@@ -141,6 +182,10 @@ class teamScreenState extends State<TeamScreenWidget>{
                     )
                 ),
               ]
+          ),
+          Divider(
+            height: 12,
+            color: Colors.white,
           ),
         ]
     );
@@ -187,11 +232,11 @@ class teamScreenState extends State<TeamScreenWidget>{
               child: UnitInfoCard(value)
           );
         },
-        child: LongPressDraggable(
+        child: LongPressDraggable<String>(
             feedback: Image.asset(value),
             child: unitListCard(value),
             childWhenDragging: unitListCard(value),
-            data:[value]
+            data:value
         )
     );
   }
@@ -266,11 +311,7 @@ class teamScreenState extends State<TeamScreenWidget>{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("assets/gui/star.png"),
-                    Image.asset("assets/gui/star.png"),
-                    Image.asset("assets/gui/star.png"),
-                    Image.asset("assets/gui/star.png"),
-                    Image.asset("assets/gui/star.png"),
+                    generateStars(5)
                   ],
                 ),
               )
@@ -549,6 +590,26 @@ class teamScreenState extends State<TeamScreenWidget>{
       gridItems.add(toAdd);
     }
     return gridItems;
+  }
+  Widget generateStars(int starCount){
+    return Container(
+      width: 150,
+      height: 10,
+      child: Center(
+        child: ListView.builder(
+          shrinkWrap: true,
+          padding: EdgeInsets.fromLTRB(2,0,2,0),
+          scrollDirection: Axis.horizontal,
+          itemExtent: 20.0,
+          itemBuilder: (BuildContext context, int index) {
+            return Center(
+              child: Image.asset("assets/gui/star.png")
+            );
+          },
+          itemCount: starCount,
+        )
+      ),
+    );
   }
   void refreshList() async{
     setState(() {
