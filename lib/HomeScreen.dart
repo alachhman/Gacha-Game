@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
+String selectedUrl = "https://www.youtube.com/";
+
 class HomeScreenWidget extends StatelessWidget {
 
 
@@ -13,9 +15,11 @@ class HomeScreenWidget extends StatelessWidget {
       routes: {
         '/widget': (_) =>
         new WebviewScaffold(
-          url: "https://www.google.com/",
-          withZoom: false,
+          url: selectedUrl,
+          withZoom: true,
           withLocalStorage: true,
+
+
         ),
       },
     );
@@ -36,6 +40,10 @@ class _MyAppState extends State<Foundation> {
   }
 
 
+  final flutterWebviewPlugin = new FlutterWebviewPlugin();
+
+
+
 
 
   Widget build(BuildContext context) {
@@ -50,8 +58,13 @@ class _MyAppState extends State<Foundation> {
               child: IconButton(
                 icon: Icon(Icons.home),
                 onPressed: () {
-                  _opennewpage();
+                  flutterWebviewPlugin.launch(selectedUrl,
+                      rect: new Rect.fromLTWH(
+                          0.0, 220.0, MediaQuery.of(context).size.width, 300.0)
+                  );
+
                 },
+
               ),
             ),
           ),
@@ -76,7 +89,16 @@ class _MyAppState extends State<Foundation> {
                 alignment: FractionalOffset.topRight,
                 child: IconButton(
                     icon: Icon(Icons.settings),
-                    onPressed: null,
+                    onPressed: (){
+                      showDialog(
+                          context: context,
+                        builder: (BuildContext context) => new Card(
+                          child: new RaisedButton(
+                            child: const Text("LogOut"),
+                          ),
+                        )
+                      );
+                    },
                 ),
               ))
         ],
@@ -84,4 +106,5 @@ class _MyAppState extends State<Foundation> {
     );
   }
 }
+
 
