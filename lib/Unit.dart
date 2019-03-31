@@ -14,7 +14,6 @@ class Unit{
   final String DEF_b;
   final String SPD_b;
   final String HP_b;
-  final String bRarity;
   Unit({
     this.name,
     this.elem,
@@ -30,8 +29,7 @@ class Unit{
     this.ATK_b,
     this.DEF_b,
     this.SPD_b,
-    this.HP_b,
-    this.bRarity
+    this.HP_b
   });
   factory Unit.fromJson(Map<String,dynamic> json){
     return new Unit(
@@ -50,7 +48,6 @@ class Unit{
       DEF_b: json['DEF_b'].toString(),
       SPD_b: json['SPD_b'].toString(),
       HP_b: json['HP_b'].toString(),
-      bRarity: json['bRarity'].toString(),
     );
   }
 }
