@@ -36,7 +36,6 @@ class _PlaceHolderWidget extends State<PlaceHolderWidget> {
     return Column(
         children: <Widget>[
           LoginButton(),
-          theUser(),
         ]
     );
   }
