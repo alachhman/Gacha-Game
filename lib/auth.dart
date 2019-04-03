@@ -3,9 +3,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rxdart/rxdart.dart';
 
-// Removed auth from being private
-// Can be streamed to other class by using authSerive.auth
-
 class AuthService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -32,6 +29,7 @@ class AuthService {
     });
   }
 
+
   Future<FirebaseUser> googleSignIn() async {
     loading.add(true);
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -47,15 +45,21 @@ class AuthService {
 
   void updateUserData(FirebaseUser user) async {
     DocumentReference ref = db.collection('users1').document(user.uid);
-    // When a new user is created this will be the information stored on the database
+
+
     return ref.setData({
       'uid': user.uid,
       'email': user.email,
+      'gold': 0,
+      'emeralis': 0,
       'displayName': user.displayName,
       'lastSeen': DateTime.now(),
       'Unit List': []
     }, merge: true);
+
   }
+
+
 
 
   void signOut() {

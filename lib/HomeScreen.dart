@@ -41,7 +41,8 @@ class HomeScreenWidget extends StatelessWidget {
                     icon: Icon(Icons.settings),
                     onPressed: null
                 ),
-              ))
+              )
+          )
         ],
       ),
     );
