@@ -38,7 +38,7 @@ class FriendScreen extends StatelessWidget {
           ),
           new Divider(color: Colors.blue,indent: 16.0,),
           new RaisedButton(
-            child: const Text('Add Niggas!'),
+            child: const Text('Add Friends'),
             color: Colors.black,
 
           ),
