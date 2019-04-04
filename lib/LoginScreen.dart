@@ -35,6 +35,8 @@ class LoginScreen extends StatelessWidget {
                           builder: (context) => new MainScreen()),
                     );
                   }
+              ),
+
 //              showDialog(
 //                  context: context,
 //                  builder: (BuildContext context) => Card(//this is the card that the log in goes
@@ -95,7 +97,16 @@ class LoginScreen extends StatelessWidget {
 //                  )
 //              );
 //            },
-              )
+
+          ),
+          RaisedButton(
+              child: const Text('Logout'),
+              elevation: 6.0,
+              color: Color(0xFF4B3F72),
+              splashColor: Color(0xFF4B3F72),
+              onPressed: () {
+                authService.signOut();
+              }
           )
         ]
         )
