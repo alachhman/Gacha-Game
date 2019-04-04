@@ -1,106 +1,81 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-
-String selectedUrl = "https://www.youtube.com/";
-
+import 'package:webview_flutter/webview_flutter.dart';
+String selectedUrl = "https://www.nyit.edu/";
 class HomeScreenWidget extends StatelessWidget {
-
-
   HomeScreenWidget();
-
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Foundation(),
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/widget': (_) =>
-        new WebviewScaffold(
-          url: selectedUrl,
-          withZoom: true,
-          withLocalStorage: true,
-
-
-        ),
-      },
+    return Scaffold(
+      body: homeScreen(context),
     );
   }
-}
-
-class Foundation extends StatefulWidget {
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-
-class _MyAppState extends State<Foundation> {
-
-  void _opennewpage() {
-    Navigator.of(context).pushNamed('/widget');
-  }
-
-
-  final flutterWebviewPlugin = new FlutterWebviewPlugin();
-
-
-
-
-
-  Widget build(BuildContext context) {
+  Widget homeScreen(BuildContext context) {
     return Container(
       color: Color(0xFF4B3F72),
       height: 650,
       child: new Stack(
         children: <Widget>[
-          new Positioned(
-            child: new Align(
+          Align(
               alignment: FractionalOffset.topLeft,
               child: IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  flutterWebviewPlugin.launch(selectedUrl,
-                      rect: new Rect.fromLTWH(
-                          0.0, 220.0, MediaQuery.of(context).size.width, 300.0)
-                  );
-
-                },
-
-              ),
-            ),
-          ),
-          new Positioned(
-            child: new Align(
-              alignment: FractionalOffset.topCenter,
-              child: IconButton(
-                icon: Icon(Icons.cake),
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                    builder: (BuildContext context) => new Card(
-                      child: const Text("yellow"),
-                    )
-                  );
-                },
-              ),
-            ),
-          ),
-          new Positioned(
-              child: new Align(
-                alignment: FractionalOffset.topRight,
-                child: IconButton(
-                    icon: Icon(Icons.settings),
-                    onPressed: (){
-                      showDialog(
-                          context: context,
+                  icon: Icon(Icons.home),
+                  onPressed: () {
+                    showDialog(
+                        context: context,
                         builder: (BuildContext context) => new Card(
-                          child: new RaisedButton(
-                            child: const Text("LogOut"),
+                          color: Color(0xFF4B3F72),
+                          margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
+                          child:  const WebView(
+                            initialUrl: 'https://flutter.dev/',
+                            javascriptMode: JavascriptMode.unrestricted,
                           ),
                         )
-                      );
-                    },
-                ),
-              ))
+                    );
+                  }
+              )
+          ),
+          Align(
+            alignment: FractionalOffset.topCenter,
+            child: IconButton(
+              icon: Icon(Icons.cake),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => new Card(
+                      color: Colors.white,
+                      margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
+                      child: new Column(
+                        children: <Widget>[
+                          new ListTile(
+                            leading: new Text("username"),
+                            title: new Text("gift recieved"),
+                            subtitle: new Text("From UserName2"),
+                          ),
+                        ],
+                      ),
+                    )
+                );
+              },
+            ),
+          ),
+          new Align(
+            alignment: FractionalOffset.topRight,
+            child: IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: (){
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => new Card(
+                      color: Color(0xFF4B3F72),
+                      margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
+                      child: new RaisedButton(
+                        child: const Text("test2"),
+                      ),
+                    )
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
