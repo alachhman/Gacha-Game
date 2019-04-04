@@ -15,8 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "875116503024-d89pm7pd81lfo4e4jt1rgg9ot7ppl5fa.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "875116503024-dspdobi682p4dfnb6ag4g7avl2fpk7lr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thisisuserdb69.userdb",
+            "certificate_hash": "fc8e3e5f34597344ca63085e77dee4e37a7f25bc"
+          }
         }
       ],
       "api_key": [
@@ -25,15 +29,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875116503024-d89pm7pd81lfo4e4jt1rgg9ot7ppl5fa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -46,8 +48,36 @@
       },
       "oauth_client": [
         {
-          "client_id": "875116503024-d89pm7pd81lfo4e4jt1rgg9ot7ppl5fa.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "875116503024-8smtjbbtfr1joap2nt93k9bmngnc6mpi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wjak.jfinalproject",
+            "certificate_hash": "fc8e3e5f34597344ca63085e77dee4e37a7f25bc"
+          }
+        },
+        {
+          "client_id": "875116503024-50v4le2p10rg16cclvo1p6t0v0sdls0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wjak.jfinalproject",
+            "certificate_hash": "fd6013360b1f0d27780f130bd7cbc78bbb1c944c"
+          }
+        },
+        {
+          "client_id": "875116503024-f0and4lh989385n9d9mpfsrcebtatf9v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wjak.jfinalproject",
+            "certificate_hash": "3e4136bb5bc6916d0a9d5961f0c507c9f08178a7"
+          }
+        },
+        {
+          "client_id": "875116503024-veqsaj440gsrm6a1g7dm8v77na2cmvip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wjak.jfinalproject",
+            "certificate_hash": "efc488efb6d90c567bbd8ccc8f80b7a56aa0d888"
+          }
         }
       ],
       "api_key": [
@@ -56,15 +86,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875116503024-d89pm7pd81lfo4e4jt1rgg9ot7ppl5fa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

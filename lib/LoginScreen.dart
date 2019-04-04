@@ -28,9 +28,7 @@ class LoginScreen extends StatelessWidget {
                   color: Color(0xFF4B3F72),
                   splashColor: Color(0xFF4B3F72),
                   onPressed: () {
-                    if(FirebaseAuth.instance.currentUser() == null) {
-                      authService.googleSignIn();
-                    }
+                    authService.googleSignIn();
                     Navigator.push(
                       context,
                       new MaterialPageRoute(
