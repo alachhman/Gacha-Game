@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-List<List<String>> templist = [["assets/chrom.png", "10" , "Antnee"], ["asssets/cherche.png", "10" , "Kjeannite"]];
+
+List<List<String>> templist = [["assets/chrom.png", "10" , "Antnee"], ["assets/cherche.png", "10" , "Kjeannite"]];
 class PlayScreenWidget extends StatelessWidget {
   PlayScreenWidget();
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class PlayScreenWidget extends StatelessWidget {
         color: Color(0xFF4B3F72),
         child: ListView.builder(
       itemBuilder: (BuildContext context, int index) =>
-          EntryItem(data[index]),
+          EntryItem(data[index], context),
       itemCount: data.length,
         )
     );
@@ -26,10 +27,9 @@ class Entry {
   final List<Entry> children;
 }
 class EntryItem extends StatelessWidget {
-  const EntryItem(this.entry);
-
+  const EntryItem(this.entry, this.context);
   final Entry entry;
-
+  final BuildContext context;
   Widget _buildTiles(Entry root) {
     String worldImage = "";
     switch(root.title){
@@ -43,8 +43,8 @@ class EntryItem extends StatelessWidget {
         onTap: (){
           print(root.title);
           showDialog(
-              context: null,
-              child: friendsList(),
+            context: context,
+            child: friendsList(),
           );
         },
       );
@@ -73,13 +73,31 @@ Card friendsList(){
   return Card(
     elevation: 20,
     margin: EdgeInsets.fromLTRB(70, 175, 70, 175),
+    shape: BeveledRectangleBorder(
+      borderRadius: BorderRadius.circular(10.0),
+    ),
     child: Column(
       children: <Widget>[
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 3, 0, 3),
+        ),
+        RichText(
+            text: TextSpan(
+              text: "Choose a Friend",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.black
+              ),
+            )
+        ),
         ListView.builder(
-            itemBuilder: (context, position){
-              return friendsListItem(position);
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemBuilder: (context, position){
+            return friendsListItem(position);
             },
-            itemCount: templist.length,
+          itemCount: templist.length,
         )
       ],
     ),
@@ -91,33 +109,48 @@ Card friendsListItem(int position){
     shape: BeveledRectangleBorder(
       borderRadius: BorderRadius.circular(10.0),
     ),
-    child: Row(
-      children: <Widget>[
-        Image.asset(templist[position][0]),
-        RichText(
-            text: TextSpan(
-              text: lvlText,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.black
-              ),
-            )
-        ),
-        RichText(
-            text: TextSpan(
-              text: templist[position][2],
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.black
-              ),
-            )
-        ),
-      ],
+    child: Container(
+      height: 50,
+      width: 50,
+      child:Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Image.asset(templist[position][0]),
+          Padding(
+            padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
+          ),
+          RichText(
+             text: TextSpan(
+               text: lvlText,
+               style: TextStyle(
+                   fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                    color: Colors.black
+                ),
+             )
+         ),
+          RichText(
+             text: TextSpan(
+               text: templist[position][2],
+               style: TextStyle(
+                   fontWeight: FontWeight.bold,
+                   fontSize: 13,
+                   color: Colors.black
+               ),
+             )
+         ),
+          IconButton(
+            icon: Icon(Icons.check),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
+          ),
+        ],
+      ),
     ),
   );
 }
+
 final List<Entry> data = <Entry>[
   Entry(
     'World 1',
