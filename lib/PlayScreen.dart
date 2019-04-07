@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
+List<List<String>> templist = [["assets/chrom.png", "10" , "Antnee"], ["asssets/cherche.png", "10" , "Kjeannite"]];
 class PlayScreenWidget extends StatelessWidget {
   PlayScreenWidget();
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: stages(context),
@@ -43,6 +42,10 @@ class EntryItem extends StatelessWidget {
         child: ListTile(title: Text(root.title)),
         onTap: (){
           print(root.title);
+          showDialog(
+              context: null,
+              child: friendsList(),
+          );
         },
       );
     }
@@ -65,6 +68,55 @@ class EntryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return _buildTiles(entry);
   }
+}
+Card friendsList(){
+  return Card(
+    elevation: 20,
+    margin: EdgeInsets.fromLTRB(70, 175, 70, 175),
+    child: Column(
+      children: <Widget>[
+        ListView.builder(
+            itemBuilder: (context, position){
+              return friendsListItem(position);
+            },
+            itemCount: templist.length,
+        )
+      ],
+    ),
+  );
+}
+Card friendsListItem(int position){
+  String lvlText = "Lvl " + templist[position][1];
+  return Card(
+    shape: BeveledRectangleBorder(
+      borderRadius: BorderRadius.circular(10.0),
+    ),
+    child: Row(
+      children: <Widget>[
+        Image.asset(templist[position][0]),
+        RichText(
+            text: TextSpan(
+              text: lvlText,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.black
+              ),
+            )
+        ),
+        RichText(
+            text: TextSpan(
+              text: templist[position][2],
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.black
+              ),
+            )
+        ),
+      ],
+    ),
+  );
 }
 final List<Entry> data = <Entry>[
   Entry(

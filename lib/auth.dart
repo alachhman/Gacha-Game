@@ -46,6 +46,7 @@ class AuthService {
   void updateUserData(FirebaseUser user) async {
     DocumentReference ref = db.collection('users1').document(user.uid);
 
+
     return ref.setData({
       'uid': user.uid,
       'email': user.email,
@@ -62,6 +63,7 @@ class AuthService {
 
   void signOut() {
     auth.signOut();
+    _googleSignIn.signOut();
   }
 }
 
