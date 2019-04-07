@@ -21,7 +21,9 @@ class HomeScreenWidget extends StatelessWidget {
               alignment: FractionalOffset.topLeft,
               child: IconButton(
                   icon: Icon(Icons.mail),
-                  onPressed: null
+                  onPressed: () {
+                    return null;
+                  }
               ),
             ),
           ),
