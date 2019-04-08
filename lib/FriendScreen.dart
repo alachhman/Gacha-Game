@@ -1,4 +1,5 @@
 
+
 import 'package:flutter/material.dart';
 
 class FriendScreen extends StatelessWidget {
@@ -10,33 +11,33 @@ class FriendScreen extends StatelessWidget {
       child: new Column(
         children: <Widget>[
           new ListTile(
-            leading: new Text("UNIT HERE"),
+            leading: new Image.asset("assets/ayaka.png"),
             title: new Text("PlayerName"
               ,style: new TextStyle(fontWeight: FontWeight.w400),),
             subtitle: new Text("Player Level"),
           ),
-          new Divider(color: Colors.blue,indent: 16.0,),
+          new Divider(color: Colors.black),
           new ListTile(
-            leading: new Text("UNIT2 HERE"),
+            leading: new Image.asset("assets/chrom.png"),
             title: new Text("PlayerName2"
               ,style: new TextStyle(fontWeight: FontWeight.w400),),
             subtitle: new Text("Player2 Level"),
           ),
-          new Divider(color: Colors.blue,indent: 16.0,),
+          new Divider(color: Colors.black),
           new ListTile(
-            leading: new Text("UNIT3 HERE"),
+            leading: new Image.asset("assets/cherche.png"),
             title: new Text("PlayerName3"
               ,style: new TextStyle(fontWeight: FontWeight.w400),),
             subtitle: new Text("Player3 Level"),
           ),
-          new Divider(color: Colors.blue,indent: 16.0,),
+          new Divider(color: Colors.black),
           new ListTile(
-            leading: new Text("UNIT4 HERE"),
+            leading: new Image.asset("assets/ayaka.png"),
             title: new Text("PlayerName4"
               ,style: new TextStyle(fontWeight: FontWeight.w400),),
             subtitle: new Text("Player4 Level"),
           ),
-          new Divider(color: Colors.blue,indent: 16.0,),
+          new Divider(color: Colors.black),
           new RaisedButton(
             child: const Text('Add Friends'),
             color: Colors.black,
