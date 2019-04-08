@@ -47,10 +47,25 @@ class HomeScreenWidget extends StatelessWidget {
                       child: new Column(
                         children: <Widget>[
                           new ListTile(
-                            leading: new Text("username"),
+                            leading: new Icon(Icons.card_giftcard),
                             title: new Text("gift recieved"),
                             subtitle: new Text("From UserName2"),
                           ),
+                          new RaisedButton(
+                              onPressed: null,
+                              child: const Text("Accept Gift!"),
+                          ),
+                          new Divider(color: Colors.black),
+                          new ListTile(
+                            leading: new Icon(Icons.card_giftcard),
+                            title: new Text("gift recieved"),
+                            subtitle: new Text("From UserName3"),
+                          ),
+                          new RaisedButton(
+                            onPressed: null,
+                            child: const Text("Accept Gift!"),
+                          ),
+                          new Divider(color: Colors.black),
                         ],
                       ),
                     )
@@ -69,7 +84,9 @@ class HomeScreenWidget extends StatelessWidget {
                       color: Color(0xFF4B3F72),
                       margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
                       child: new RaisedButton(
-                        child: const Text("test2"),
+                        child: const Text("SETTINGS"),
+
+
                       ),
                     )
                 );
