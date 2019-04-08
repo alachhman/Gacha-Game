@@ -28,8 +28,7 @@ class LoginScreen extends StatelessWidget {
                   color: Color(0xFF4B3F72),
                   splashColor: Color(0xFF4B3F72),
                   onPressed: () {
-                      authService.googleSignIn();
-
+                    authService.googleSignIn();
                     Navigator.push(
                       context,
                       new MaterialPageRoute(

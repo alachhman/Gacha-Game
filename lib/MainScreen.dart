@@ -21,6 +21,7 @@ class _HomeState extends State<MainScreen> {
     TeamScreenWidget(),
     PlayScreenWidget(),
     SummonScreenWidget(),
+    SummonScreenWidget(),
   ];
 
   @override
@@ -78,7 +79,17 @@ class _HomeState extends State<MainScreen> {
               ),
               title: Text('Summon',
                   style: TextStyle(
-                  color: Colors.white
+                      color: Colors.white
+                  )
+              )
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_add,
+                color: Color(0xFF4B3F72),
+              ),
+              title: Text('Friends',
+                  style: TextStyle(
+                      color: Colors.white
                   )
               )
           )
