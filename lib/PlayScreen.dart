@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:jfinalproject/Unit.dart';
+import 'package:jfinalproject/UnitInfoCard.dart';
+import 'package:jfinalproject/LoadUnit.dart';
 
 List<List<String>> templist = [["assets/chrom.png", "10" , "Antnee"], ["assets/cherche.png", "10" , "Kjeannite"]];
+List<Unit> units = new List();
 class PlayScreenWidget extends StatelessWidget {
   PlayScreenWidget();
   Widget build(BuildContext context) {
+    loadUnit(units);
     return Scaffold(
       body: stages(context),
     );
@@ -95,7 +100,7 @@ Card friendsList(){
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (context, position){
-            return friendsListItem(position);
+            return friendsListItem(position, context);
             },
           itemCount: templist.length,
         )
@@ -103,7 +108,7 @@ Card friendsList(){
     ),
   );
 }
-Card friendsListItem(int position){
+Card friendsListItem(int position, BuildContext context){
   String lvlText = "Lvl " + templist[position][1];
   return Card(
     shape: BeveledRectangleBorder(
@@ -115,7 +120,15 @@ Card friendsListItem(int position){
       child:Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Image.asset(templist[position][0]),
+          GestureDetector(
+            onDoubleTap: (){
+              showDialog(
+                  context: context,
+                  child: UnitInfoCard(templist[position][0], units)
+              );
+            },
+            child: Image.asset(templist[position][0]),
+          ),
           Padding(
             padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
           ),
