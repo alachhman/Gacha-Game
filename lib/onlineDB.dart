@@ -131,3 +131,40 @@ class getUserUnits extends StatelessWidget {
     );
   }
 }
+
+// Generates Help Screen based off of friends list
+class friendsHelper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: FirebaseAuth.instance.currentUser(),
+        builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
+          return StreamBuilder(
+              stream: Firestore.instance.collection('users1').document(snapshot.data.uid).snapshots(),
+              builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                //return Text(snapshot.data['Friends'].toString(),
+                if(!snapshot.hasData) return Text('Loading Data');
+                return ListView.builder(
+                  padding: EdgeInsets.all(10.0),
+                  itemCount: snapshot.data['Friends'].length,
+                  itemBuilder: (context, index) {
+                    return buildItem(context, snapshot.data['Friends'][index]);
+                  },
+                );
+              }
+          );
+        }
+    );
+  }
+
+  // TODO: PRETTIFY THE PLAY SCREEN HELP LIST HERE
+  Widget buildItem(context, String id) {
+    return StreamBuilder(
+        stream: Firestore.instance.collection('users1').document(id).snapshots(),
+        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (!snapshot.hasData) return Text('Loading Data');
+          return Text(snapshot.data['displayName']);
+        }
+    );
+  }
+}

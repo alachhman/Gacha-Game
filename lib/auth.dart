@@ -55,7 +55,8 @@ class AuthService {
       'level': 0,
       'displayName': user.displayName,
       'lastSeen': DateTime.now(),
-      'Unit List': []
+      'Unit List': [],
+      'Friends': [],
     }, merge: true);
 
   }
