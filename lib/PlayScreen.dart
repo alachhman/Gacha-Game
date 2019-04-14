@@ -118,6 +118,9 @@ Card friendsListItem(int position){
     ),
   );
 }
+Card resultsScreen(){
+
+}
 final List<Entry> data = <Entry>[
   Entry(
     'World 1',
