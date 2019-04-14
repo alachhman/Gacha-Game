@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jfinalproject/UnitInfoCard.dart';
 import 'package:jfinalproject/database_helper.dart';
 import 'package:jfinalproject/TeamStore.dart';
-import 'dart:async' show Future;
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
 import 'package:jfinalproject/Unit.dart';
+import 'package:jfinalproject/LoadUnit.dart';
 final dbHelper = DatabaseHelper.instance;
 final teamHelper = TeamStore.instance;
 class TeamScreenWidget extends StatefulWidget {
@@ -23,7 +22,7 @@ class teamScreenState extends State<TeamScreenWidget>{
     unitList = [];
     _query();
     _insert();
-    loadUnit();
+    loadUnit(units);
     getTeam();
   }
   final int unitCountInJson = 3;
@@ -78,7 +77,7 @@ class teamScreenState extends State<TeamScreenWidget>{
                           onDoubleTap: (){
                             showDialog(
                               context: context,
-                              child: UnitInfoCard(inTeam[1])
+                              child: UnitInfoCard(inTeam[1], units)
                             );
                           },
                           child: Image.asset(inTeam[1]),
@@ -111,7 +110,7 @@ class teamScreenState extends State<TeamScreenWidget>{
                             onDoubleTap: (){
                               showDialog(
                                   context: context,
-                                  child: UnitInfoCard(inTeam[2])
+                                  child: UnitInfoCard(inTeam[2], units)
                               );
                             },
                             child: Image.asset(inTeam[2]),
@@ -142,7 +141,7 @@ class teamScreenState extends State<TeamScreenWidget>{
                             onDoubleTap: (){
                               showDialog(
                                   context: context,
-                                  child: UnitInfoCard(inTeam[3])
+                                  child: UnitInfoCard(inTeam[3], units)
                               );
                             },
                             child: Image.asset(inTeam[3]),
@@ -238,7 +237,7 @@ class teamScreenState extends State<TeamScreenWidget>{
         onDoubleTap: (){
           showDialog(
               context: context,
-              child: UnitInfoCard(value)
+              child: UnitInfoCard(value, units)
           );
         },
         child: LongPressDraggable<String>(
@@ -257,337 +256,6 @@ class teamScreenState extends State<TeamScreenWidget>{
       elevation: 5,
     );
   }
-  Future<String> _loadUnitFile() async {
-    return await rootBundle.loadString('assets/info/units.json');
-  }
-  Future loadUnit() async {
-    String jsonString = await _loadUnitFile();
-    final jsonResponse = json.decode(jsonString);
-    for(int i = 0; i < unitCountInJson; i++){
-      Unit unit = new Unit.fromJson(jsonResponse[i]);
-      units.add(unit);
-      print(unit.name + " added");
-    }
-    return units;
-  }
-  Widget UnitInfoCard(String value){
-    Unit unitBeingViewed = units[0];
-    String unitNameTemp = value.substring(value.indexOf("/",0)+1,value.indexOf(".",0));
-    String firstLetter = unitNameTemp.substring(0,1).toUpperCase();
-    String unitName = firstLetter + unitNameTemp.substring(1, unitNameTemp.length);
-    for(final u in units){
-      if (u.name == unitNameTemp){
-        unitBeingViewed = u;
-      }
-    }
-    int unitLVL = 1;
-    int unitHP = (int.parse(unitBeingViewed.HP_b)*(unitLVL * int.parse(unitBeingViewed.HP_g)));
-    int unitATK = (int.parse(unitBeingViewed.ATK_b)*(unitLVL * int.parse(unitBeingViewed.ATK_g)));
-    int unitDEF = (int.parse(unitBeingViewed.DEF_b)*(unitLVL * int.parse(unitBeingViewed.DEF_g)));
-    int unitSPD = (int.parse(unitBeingViewed.SPD_b)*(unitLVL * int.parse(unitBeingViewed.SPD_g)));
-    return Card(
-      //color: Colors.grey,
-      elevation: 20,
-      margin: EdgeInsets.fromLTRB(70, 220, 70, 130),
-      shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child:
-      Column(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.all(5),
-                    child:RichText(
-                      text: TextSpan(
-                        text: unitName,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.black
-                        ),
-                      ),
-                    ) ,
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    generateStars(5)
-                  ],
-                ),
-              )
-            ],
-          ),
-          Divider(
-            height: 2,
-            color: Colors.black,
-          ),
-          Row(
-            children: <Widget>[
-              Container(
-                height: 125,
-                width: 148,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(value),
-                      fit: BoxFit.fill,
-                      alignment: Alignment.topCenter,
-                    )
-                ),
-                margin: EdgeInsets.all(10),
-                child: RichText(
-                    text: TextSpan(
-                      text: "Lv. " + unitLVL.toString(),
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                          color: Colors.black
-                      ),
-                    )
-                ),
-              ),
-              Container(
-                height: 147,
-                width: 0.5,
-                color: Colors.black,
-                margin: const EdgeInsets.only(right: 10.0),
-              ),
-              Column(
-                children: <Widget>[
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 10, 10, 10),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              RichText(
-                                  text: TextSpan(
-                                    text: "HP: ",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                        color: Colors.black
-                                    ),
-                                  )
-                              ),
-                              RichText(
-                                  text: TextSpan(
-                                    text: "ATK: ",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                        color: Colors.black
-                                    ),
-                                  )
-                              ),
-                              RichText(
-                                  text: TextSpan(
-                                    text: "DEF: ",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                        color: Colors.black
-                                    ),
-                                  )
-                              ),
-                              RichText(
-                                  text: TextSpan(
-                                    text: "SPD: ",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                        color: Colors.black
-                                    ),
-                                  )
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              RichText(
-                                  text: TextSpan(
-                                    text: unitHP.toString(),
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        color: Colors.black
-                                    ),
-                                  )
-                              ),
-                              RichText(
-                                  text: TextSpan(
-                                    text: unitATK.toString(),
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        color: Colors.black
-                                    ),
-                                  )
-                              ),
-                              RichText(
-                                  text: TextSpan(
-                                    text: unitDEF.toString(),
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        color: Colors.black
-                                    ),
-                                  )
-                              ),
-                              RichText(
-                                  text: TextSpan(
-                                    text: unitSPD.toString(),
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        color: Colors.black
-                                    ),
-                                  )
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 0, 3, 0),
-                    child: Column(
-                      children: <Widget>[
-                        Image.asset("assets/gui/" + unitBeingViewed.elem + ".png"),
-                        Image.asset("assets/gui/" + unitBeingViewed.wep + ".png"),
-                      ],
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-          Divider(
-            height: 2,
-            color: Colors.black,
-          ),
-          Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(10),
-                child:
-                Row(
-                  children: <Widget>[
-                    Image.asset("assets/skillIcons/" + unitBeingViewed.sOneName +".png"),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          child:RichText(
-                            text: TextSpan(
-                              text: unitBeingViewed.sOneName,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                  color: Colors.black
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          child:RichText(
-                            text: TextSpan(
-                              text: unitBeingViewed.sOneDesc,
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.black
-                              ),
-                            ),
-                          ) ,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Divider(
-                height: 2,
-                color: Colors.black,
-              ),
-              Container(
-                margin: EdgeInsets.all(10),
-                child:
-                Row(
-                  children: <Widget>[
-                    Image.asset("assets/skillIcons/" + unitBeingViewed.sTwoName +".png"),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          child:RichText(
-                            text: TextSpan(
-                              text: unitBeingViewed.sTwoName,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                  color: Colors.black
-                              ),
-                            ),
-                          ) ,
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          child:RichText(
-                            text: TextSpan(
-                              text: unitBeingViewed.sTwoDesc,
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.black
-                              ),
-                            ),
-                          ) ,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          Divider(
-            height: 2,
-            color: Colors.black,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              RaisedButton(
-                child: Text("Enhance"),
-                onPressed: (){
-                  //enhance dialog box method call here
-                  _deleteTeam();
-                },
-              ),
-              RaisedButton(
-                child: Text("Evolve"),
-                onPressed: (){
-                  //evolve dialog box method call here
-                  _delete();
-                },
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
 // Note: Placeholder method to generate grid data
   List<String> _generateGridItems() {
     List<String> gridItems = new List<String>();
@@ -600,26 +268,6 @@ class teamScreenState extends State<TeamScreenWidget>{
       gridItems.add(toAdd);
     }
     return gridItems;
-  }
-  Widget generateStars(int starCount){
-    return Container(
-      width: 150,
-      height: 10,
-      child: Center(
-        child: ListView.builder(
-          shrinkWrap: true,
-          padding: EdgeInsets.fromLTRB(2,0,2,0),
-          scrollDirection: Axis.horizontal,
-          itemExtent: 20.0,
-          itemBuilder: (BuildContext context, int index) {
-            return Center(
-              child: Image.asset("assets/gui/star.png")
-            );
-          },
-          itemCount: starCount,
-        )
-      ),
-    );
   }
   void refreshList() async{
     setState(() {
@@ -703,12 +351,4 @@ class teamScreenState extends State<TeamScreenWidget>{
     final id = await teamHelper.insert(row);
     print('inserted row id: $id');
   }
-  /*void _comparitiveQuery() async {
-    final id =  await dbHelper.queryRowCount();
-    if(unitPool != [] || unitPool != null) {
-      if (unitPool != tempPool)
-        unitPool = tempPool;
-    }
-  }*/
-
 }
