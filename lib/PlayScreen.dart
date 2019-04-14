@@ -18,9 +18,9 @@ class PlayScreenWidget extends StatelessWidget {
         height: 650,
         color: Color(0xFF4B3F72),
         child: ListView.builder(
-      itemBuilder: (BuildContext context, int index) =>
-          EntryItem(data[index], context),
-      itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) =>
+              EntryItem(data[index], context),
+          itemCount: data.length,
         )
     );
   }
@@ -55,18 +55,18 @@ class EntryItem extends StatelessWidget {
       );
     }
     return Card(
-      child: Column(
-        children: <Widget>[
-          Image.asset(worldImage,
-            fit: BoxFit.fitWidth
-          ),
-          ExpansionTile(
+        child: Column(
+          children: <Widget>[
+            Image.asset(worldImage,
+                fit: BoxFit.fitWidth
+            ),
+            ExpansionTile(
               key: PageStorageKey<Entry>(root),
               title: Text(root.title),
               children: root.children.map(_buildTiles).toList(),
             ),
-        ],
-      )
+          ],
+        )
     );
   }
   @override
@@ -101,7 +101,7 @@ Card friendsList(){
           shrinkWrap: true,
           itemBuilder: (context, position){
             return friendsListItem(position, context);
-            },
+          },
           itemCount: templist.length,
         )
       ],
@@ -133,25 +133,25 @@ Card friendsListItem(int position, BuildContext context){
             padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
           ),
           RichText(
-             text: TextSpan(
-               text: lvlText,
-               style: TextStyle(
-                   fontWeight: FontWeight.bold,
+              text: TextSpan(
+                text: lvlText,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 13,
                     color: Colors.black
                 ),
-             )
-         ),
+              )
+          ),
           RichText(
-             text: TextSpan(
-               text: templist[position][2],
-               style: TextStyle(
-                   fontWeight: FontWeight.bold,
-                   fontSize: 13,
-                   color: Colors.black
-               ),
-             )
-         ),
+              text: TextSpan(
+                text: templist[position][2],
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                    color: Colors.black
+                ),
+              )
+          ),
           IconButton(
             icon: Icon(Icons.check),
           ),

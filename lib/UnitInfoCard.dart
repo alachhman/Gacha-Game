@@ -14,7 +14,7 @@ class UnitInfoCard extends StatelessWidget {
   }
 
   Widget unitInfoCard(String value, List<Unit> unitlist){
-    Unit unitBeingViewed = unitlist[0];
+    Unit unitBeingViewed;
     String unitNameTemp = value.substring(value.indexOf("/",0)+1,value.indexOf(".",0));
     String firstLetter = unitNameTemp.substring(0,1).toUpperCase();
     String unitName = firstLetter + unitNameTemp.substring(1, unitNameTemp.length);
