@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 //import 'package:webview_flutter/webview_flutter.dart';
-import 'package:tweet_webview/tweet_webview.dart';
+//import 'package:tweet_webview/tweet_webview.dart';
 
 class HomeScreenWidget extends StatelessWidget {
   HomeScreenWidget();
@@ -28,7 +28,7 @@ class HomeScreenWidget extends StatelessWidget {
                       builder: (BuildContext context) => new Card(
                         color: Color(0xFF4B3F72),
                         margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
-                        child:  TweetWebView.tweetID('463440424141459456'),
+                        //child:  TweetWebView.tweetID('463440424141459456'),
                       )
                   );
                 }

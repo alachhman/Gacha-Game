@@ -482,7 +482,7 @@
 		"ATK_b":12,
 		"DEF_b":3,
 		"SPD_b":4,
-		"HP_b":80
+		"HP_b":80,
 		"bRarity":5
 	},
 	{
@@ -572,7 +572,7 @@
 		"ATK_b":4,
 		"DEF_b":4,
 		"SPD_b":4,
-		"HP_b":,50
+		"HP_b":50,
 		"bRarity":4
 	},
 	{
