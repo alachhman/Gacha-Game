@@ -3,6 +3,7 @@ import 'SummonScreen.dart';
 import 'PlayScreen.dart';
 import 'TeamScreen.dart';
 import 'PlaceholderWidget.dart';
+import 'FriendScreen.dart';
 import 'HomeScreen.dart';
 import 'appbar.dart';
 import 'login.dart';
@@ -21,7 +22,7 @@ class _HomeState extends State<MainScreen> {
     TeamScreenWidget(),
     PlayScreenWidget(),
     SummonScreenWidget(),
-    SummonScreenWidget(),
+    FriendScreen(),
   ];
 
   @override
