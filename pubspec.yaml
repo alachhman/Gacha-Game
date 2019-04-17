@@ -61,10 +61,11 @@ flutter:
     - assets/bannerimages/
     - assets/skillIcons/
     - assets/info/
-    - assets/cherche.png
+    - assets/placeholder.png
+    - assets/units/
     - assets/chrom.png
     - assets/ayaka.png
-    - assets/placeholder.png
+    - assets/cherche.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

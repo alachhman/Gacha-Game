@@ -9,7 +9,7 @@ Future<String> _loadUnitFile() async {
 Future loadUnit(List<Unit> units) async {
   String jsonString = await _loadUnitFile();
   final jsonResponse = json.decode(jsonString);
-  num unitCountInJson = 50;
+  num unitCountInJson = 52;
   for(int i = 0; i < unitCountInJson; i++){
     Unit unit = new Unit.fromJson(jsonResponse[i]);
     units.add(unit);
