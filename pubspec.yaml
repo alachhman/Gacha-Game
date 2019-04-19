@@ -27,6 +27,7 @@ dependencies:
   firebase_auth:  ^0.6.6
   google_sign_in: ^3.2.4
   rxdart: ^0.20.0
+  flutter_signin_button: ^0.2.8
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -60,10 +61,11 @@ flutter:
     - assets/bannerimages/
     - assets/skillIcons/
     - assets/info/
-    - assets/cherche.png
+    - assets/placeholder.png
+    - assets/units/
     - assets/chrom.png
     - assets/ayaka.png
-    - assets/placeholder.png
+    - assets/cherche.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
