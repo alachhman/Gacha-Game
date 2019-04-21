@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-//import 'package:webview_flutter/webview_flutter.dart';
-//import 'package:tweet_webview/tweet_webview.dart';
+
+import 'LoginScreen.dart';
+import 'auth.dart';
+
 
 class HomeScreenWidget extends StatelessWidget {
   HomeScreenWidget();
@@ -25,10 +27,9 @@ class HomeScreenWidget extends StatelessWidget {
                   onPressed: () {
                   showDialog(
                       context: context,
-                      builder: (BuildContext context) => new Card(
-                        color: Color(0xFF4B3F72),
-                        margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
-                        //child:  TweetWebView.tweetID('463440424141459456'),
+                      builder: (BuildContext context) => new Container(
+                        height:600,
+       //                 child:  TweetWebView.tweetID('463440424141459456'),
                       )
                   );
                 }
@@ -69,7 +70,25 @@ class HomeScreenWidget extends StatelessWidget {
                           color: Color(0xFF4B3F72),
                           margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
                           child: new RaisedButton(
-                            child: const Text("test2"),
+                            color: Colors.green,
+                            child: const Text(
+                              'The spectacle before us was indeed sublime',
+                              style: TextStyle(
+                                  fontFamily: 'JosefinSans',
+                                  fontWeight: FontWeight.w700
+                              ),
+                            ),
+                            onPressed: () {
+                       //       signOut(); KENNY DO YOUR THING RIGHT HERE BRO
+                              //crashes app
+                              runApp(
+                                  new MaterialApp(
+                                    debugShowCheckedModeBanner: false,
+                                    home: new LoginScreen(),
+                                  )
+
+                              );
+                            }
                           ),
                         )
                     );

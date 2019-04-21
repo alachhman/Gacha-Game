@@ -59,7 +59,7 @@ class AppBarWidget extends StatelessWidget {
                     ),
                     Positioned(
                       child: new Align(
-                        alignment: Alignment(.34,-.49),
+                        alignment: Alignment(.40,-.49),
                         //
                         //PREMIUM CURRENCY
                         //

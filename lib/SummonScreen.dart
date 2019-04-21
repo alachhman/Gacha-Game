@@ -45,7 +45,12 @@ class SummonScreenWidget extends StatelessWidget {
               InkWell(
                 child: new FlatButton(
                   color: Colors.blue,
-                  child: Text("More Info"),
+                  child: Text("More Info",
+                      style: TextStyle(
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.w700
+                  ),
+                  ),
                   splashColor: Colors.blue,
                 ),
                 onTap: (){
@@ -73,7 +78,9 @@ class SummonScreenWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               RaisedButton(
-                child: Text("Summon 1"),
+                child: Text("Summon 1",style: TextStyle(
+              fontFamily: 'OpenSans',
+              ),),
                 color: Theme.of(context).accentColor,
                 onPressed: (){
                   print("Summon " + position.toString() +  " Pressed");
@@ -84,7 +91,10 @@ class SummonScreenWidget extends StatelessWidget {
                 },
               ),
               RaisedButton(
-                child: Text("Summon 10 + 1"),
+                child: Text("Summon 10 + 1",
+                  style: TextStyle(
+                  fontFamily: 'OpenSans',
+                ),),
                 color: Theme.of(context).accentColor,
                 onPressed: (){
                   isMulti = true;
@@ -171,8 +181,8 @@ class SummonScreenWidget extends StatelessWidget {
                 children: <Widget>[
                   Text("You've Obtained",
                     style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold
+                        fontFamily: 'OpenSans',
+                        fontWeight: FontWeight.w700
                     ),
                   )
                 ],
@@ -222,8 +232,8 @@ class SummonScreenWidget extends StatelessWidget {
                 children: <Widget>[
                   Text("You've Obtained",
                     style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
+                        fontFamily: 'OpenSans',
+                        fontWeight: FontWeight.w700
                     ),
                   )
                 ],

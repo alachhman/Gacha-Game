@@ -12,10 +12,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Final Project Game',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: LoginScreen(),
     );
   }

@@ -16,8 +16,8 @@ class getUserName extends StatelessWidget {
               builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                 return Text(snapshot.data['displayName'].toString(),
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.w700
                   ),);
               }
           );
@@ -39,8 +39,8 @@ class getUserLevel extends StatelessWidget {
               builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                 return Text(snapshot.data['level'].toString(),
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.w700
                   ),);
               }
           );
@@ -63,8 +63,8 @@ class getUserEmeralis extends StatelessWidget {
               builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                 return Text(snapshot.data['emeralis'].toString(),
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.w700
                   ),);
               }
           );
@@ -85,8 +85,8 @@ class getUserGold extends StatelessWidget {
               builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                 return Text(snapshot.data['gold'].toString(),
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.w700
                   ),);
               }
           );
@@ -107,8 +107,8 @@ class getUserUnits extends StatelessWidget {
               builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                 return Text(snapshot.data['Unit List'].toString(),
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.w700
                   ),);
               }
           );

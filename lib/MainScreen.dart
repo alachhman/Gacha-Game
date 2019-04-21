@@ -49,7 +49,9 @@ class _HomeState extends State<MainScreen> {
             ),
             title: Text('Home',
               style: TextStyle(
-                color: Colors.white
+                  fontSize: 16.0,
+                  fontFamily: 'JosefinSans',
+                  fontWeight: FontWeight.w700
               )
             ),
           ),
@@ -58,9 +60,11 @@ class _HomeState extends State<MainScreen> {
               color: Color(0xFF4B3F72),
             ),
             title: Text('Team',
-                style: TextStyle(
-                color: Colors.white
-            )
+              style: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: 'JosefinSans',
+                  fontWeight: FontWeight.w700
+              )
             ),
           ),
           BottomNavigationBarItem(
@@ -69,7 +73,9 @@ class _HomeState extends State<MainScreen> {
             ),
             title: Text('Play',
                 style: TextStyle(
-                color: Colors.white
+                    fontSize: 14.0,
+                    fontFamily: 'JosefinSans',
+                    fontWeight: FontWeight.w700
                 )
             ),
           ),
@@ -79,7 +85,9 @@ class _HomeState extends State<MainScreen> {
               ),
               title: Text('Summon',
                   style: TextStyle(
-                      color: Colors.white
+                      fontSize: 16.0,
+                      fontFamily: 'JosefinSans',
+                      fontWeight: FontWeight.w700
                   )
               )
           ),
@@ -89,7 +97,9 @@ class _HomeState extends State<MainScreen> {
               ),
               title: Text('Friends',
                   style: TextStyle(
-                      color: Colors.white
+                      fontSize: 16.0,
+                      fontFamily: 'JosefinSans',
+                      fontWeight: FontWeight.w700
                   )
               )
           )

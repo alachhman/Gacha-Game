@@ -44,7 +44,12 @@ class EntryItem extends StatelessWidget {
     }
     if (root.children.isEmpty) {
       return InkWell(
-        child: ListTile(title: Text(root.title)),
+        child: ListTile(title: Text(root.title,
+          style: TextStyle(
+          fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
         onTap: (){
           print(root.title);
           showDialog(
@@ -90,11 +95,9 @@ Card friendsList(){
             text: TextSpan(
               text: "Choose a Friend",
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.black
+                fontFamily: 'OpenSans',
               ),
-            )
+            ),
         ),
         ListView.builder(
           scrollDirection: Axis.vertical,
@@ -136,16 +139,16 @@ Card friendsListItem(int position, BuildContext context){
               text: TextSpan(
                 text: lvlText,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                    color: Colors.black
+                  fontSize:13,
+                  fontFamily: 'OpenSans',
                 ),
-              )
+              ),
           ),
           RichText(
               text: TextSpan(
                 text: templist[position][2],
                 style: TextStyle(
+                    fontFamily:'OpenSans',
                     fontWeight: FontWeight.bold,
                     fontSize: 13,
                     color: Colors.black
