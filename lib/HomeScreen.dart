@@ -79,7 +79,7 @@ class HomeScreenWidget extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
-                       //       signOut(); KENNY DO YOUR THING RIGHT HERE BRO
+                              authService.signOut();// GOTCHU JASON BABY
                               //crashes app
                               runApp(
                                   new MaterialApp(
