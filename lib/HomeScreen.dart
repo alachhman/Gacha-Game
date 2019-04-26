@@ -6,6 +6,8 @@ import 'auth.dart';
 
 
 class HomeScreenWidget extends StatelessWidget {
+  bool vicCon;
+  var victoryString = 'placeholder';
   HomeScreenWidget();
 
   Widget build(BuildContext context) {
@@ -95,8 +97,44 @@ class HomeScreenWidget extends StatelessWidget {
                   },
                 ),
               ),
+          Align(
+
+              alignment: Alignment(0,0),
+              child: IconButton(
+                  icon: Icon(Icons.save),
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => new Card(
+                          color: Color(0xFF4B3F72),
+                          margin: EdgeInsets.fromLTRB(20, 40, 20, 40),
+                          child: new Stack(
+                            children: <Widget>[
+                              Align(
+                                  alignment: Alignment(0,-.85),
+                                    child: Text(victoryString,
+                                    style: TextStyle(
+                                    fontFamily: 'JosefinSans',
+                                    fontSize: 42,
+                                    fontWeight: FontWeight.w700
+                                  ),
+                                )
+                              )
+                            ],
+                          )
+                        )
+                    );
+                  }
+              )
+          )
         ],
       ),
     );
   }
 }
+//if (vicCon = true) {
+//      victoryString = 'Victory';
+//    }
+//    else{
+//      victoryString = 'Failure';
+//    }   THIS CODE IS FOR THE FINAL IMPLEMENTATION
