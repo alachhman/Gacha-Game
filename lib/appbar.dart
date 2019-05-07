@@ -30,17 +30,14 @@ class AppBarWidget extends StatelessWidget {
                 child: Stack(
                   //alignment:new Alignment(x, y)
                   children: <Widget>[
-                    Positioned(
-                      child: new Align(
+                     new Align(
                         alignment:  Alignment(-.60,0),
                         //
                         //USER INFORMATION
                         //
                         child: getUserName(),
                       ),
-                    ),
-                   Positioned(
-                      child: Align(
+                   Align(
                           alignment: Alignment(-.96,.09),
                           //
                           //LEVEL INFO STUFF
@@ -56,25 +53,20 @@ class AppBarWidget extends StatelessWidget {
                           )
                         )
                       ),
-                    ),
-                    Positioned(
-                      child: new Align(
+                    new Align(
                         alignment: Alignment(.40,-.49),
                         //
                         //PREMIUM CURRENCY
                         //
                         child: getUserEmeralis()
                       ),
-                    ),
-                    Positioned(
-                      child: new Align(
+                     new Align(
                         alignment: Alignment(.40,.50),
                         //
                         //GOLD
                         //
                         child: getUserGold(),
                       ),
-                    ),
                   ],
                 ),
                 decoration: BoxDecoration(
