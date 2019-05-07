@@ -52,7 +52,7 @@ class AuthService {
       'email': user.email,
       'gold': 0,
       'emeralis': 0,
-      'level': 0,
+      'level': 1,
       'displayName': user.displayName,
       'lastSeen': DateTime.now(),
       'Unit List': [],

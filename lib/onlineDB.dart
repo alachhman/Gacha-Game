@@ -163,7 +163,34 @@ class friendsHelper extends StatelessWidget {
         stream: Firestore.instance.collection('users1').document(id).snapshots(),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (!snapshot.hasData) return Text('Loading Data');
-          return Text(snapshot.data['displayName']);
+         // return Text(snapshot.data['displayName']);
+          return new ListTile(
+            title: Text(snapshot.data['displayName']),
+            trailing:  Icon(Icons.keyboard_arrow_right),
+            subtitle: (Text(snapshot.data['level'].toString())),
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) => new Card(
+                    margin: EdgeInsets.fromLTRB(20, 120, 20, 350),
+                    child: new Column(
+                      children: <Widget>[
+                        new RaisedButton(
+                          child: new Text("Remove Friend"),
+                          onPressed: null,
+                          color: Color(0xFF4B3F72),
+                        ),
+                        new RaisedButton(
+                          child: new Text("Send Gift"),
+                          onPressed: null,
+                          disabledColor: Color(0xFF4B3F72),
+
+                        ),
+                      ],
+                    ),
+                  )
+              );            },
+          );
         }
     );
   }
