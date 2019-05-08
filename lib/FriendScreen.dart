@@ -70,7 +70,7 @@ class FriendScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: friendList(),
-      floatingActionButton: friendButton(),
+      floatingActionButton: friendButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
@@ -88,13 +88,35 @@ class FriendScreen extends StatelessWidget {
     );
   }
 
-  Widget friendButton(){
+  Widget friendButton(BuildContext context){
     return new Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         new FloatingActionButton(
             child: Icon(Icons.add),
-            onPressed: null,
+            onPressed: (){
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) => new Card(
+                    margin: EdgeInsets.fromLTRB(20, 120, 20, 350),
+                    child: new TextField(
+                      autocorrect: true,
+                      autofocus: true,
+                      textAlign: TextAlign.center,
+                      cursorColor: Color(0xFF4B3F72),
+                      cursorRadius: Radius.circular(16.0),
+                      cursorWidth: 16.0,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.gamepad),
+                        hintText: "search for friends here",
+                          hintStyle: TextStyle(fontWeight: FontWeight.w300, color: Color(0xFF4B3F72)),
+                          border: OutlineInputBorder(),
+                    ),
+
+                    ),
+                  )
+              );
+            },
             elevation: 20.0,
           tooltip: "add friend",
           backgroundColor: Color(0xFF4B3F72),
@@ -129,7 +151,6 @@ class FriendScreen extends StatelessWidget {
                           new RaisedButton(
                               child: new Text("Send Gift"),
                               onPressed: null,
-                            disabledColor: Color(0xFF4B3F72),
 
                           ),
                         ],
