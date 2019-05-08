@@ -11,13 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Final Project Game',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: LoginScreen(),
+        debugShowCheckedModeBanner: false,
+        home: LoginScreen(),
+        theme: new ThemeData(
+          primaryColor: Color(0xFF4B3F72),
+        )
     );
   }
 }
-
