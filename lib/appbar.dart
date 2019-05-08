@@ -9,7 +9,7 @@ class AppBarWidget extends StatelessWidget {
     return Scaffold(
         appBar: PreferredSize(
         preferredSize: Size.fromHeight(80.0), // here the desired height
-          child: _AppBar()// put fucking widgets here,
+          child: _AppBar()// put the desired widgets here,
     ),
     );
   }
