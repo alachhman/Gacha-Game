@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:jfinalproject/Unit.dart';
 import 'package:jfinalproject/UnitInfoCard.dart';
 import 'package:jfinalproject/LoadUnit.dart';
@@ -34,6 +35,7 @@ class Entry {
 class EntryItem extends StatelessWidget {
   const EntryItem(this.entry, this.context);
   final Entry entry;
+
   final BuildContext context;
   Widget _buildTiles(Entry root) {
     String worldImage = "";
@@ -110,6 +112,16 @@ Card friendsList(){
 }
 Card friendsListItem(int position, BuildContext context){
   String lvlText = "Lvl " + templist[position][1];
+  const platform = const MethodChannel('samples.flutter.io/battle');
+  Future<String> _launch() async{
+    String value;
+    try {
+      value = await platform.invokeMethod('start');
+    }on PlatformException catch(e) {
+      print(e);
+    }
+    return value;
+  }
   return Card(
     shape: BeveledRectangleBorder(
       borderRadius: BorderRadius.circular(10.0),
@@ -154,6 +166,7 @@ Card friendsListItem(int position, BuildContext context){
           ),
           IconButton(
             icon: Icon(Icons.check),
+            onPressed: _launch,
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(6, 0, 6, 0),

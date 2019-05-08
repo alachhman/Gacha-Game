@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
     package="wjak.jfinalproject">
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
@@ -9,7 +11,8 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="jfinalproject"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        tools:replace="android:icon,android:label">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -29,5 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name="com.unity3d.player.UnityPlayerActivity"
+            android:label="Preferences"></activity>
     </application>
 </manifest>

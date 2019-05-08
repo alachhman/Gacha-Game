@@ -1,1 +1,2 @@
-include ':BattleSystem2D-release'
+include ':2dTurnBased-release'
+include ':app'
