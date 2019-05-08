@@ -18,50 +18,108 @@ class HomeScreenWidget extends StatelessWidget {
 
   Widget friendcard(BuildContext context) {
     return Card(
+      color: Color(0xFF4B3F72),
       margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           new RaisedButton(
-              child: Text("Emeralis"),
+            child: Text("Emeralis",
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'JosefinSans',
+            ),
+            ),
+            color: Colors.green,
+            disabledColor: Colors.green,
             onPressed: (){
               showDialog(
                   context: context,
                   builder: (BuildContext context) => new Card(
+                    color: Color(0xFF4B3F72),
                     margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
                     child: new Column(
                       children: <Widget>[
                         new RaisedButton(
-                          child: Text("+1 Emeralis"),
-                            onPressed: null
+                          child: Text("+1 Emeralis",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'JosefinSans',
+                            ),),
+                          onPressed: null,
+                          color: Colors.green,
+                          disabledColor: Colors.green,
+
                         ),
                         new RaisedButton(
-                            child: Text("+10 Emeralis"),
-                            onPressed: null
+                          child: Text("+10 Emeralis",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'JosefinSans',
+                            ),),
+                          onPressed: null,
+                          color: Colors.green,
+                          disabledColor: Colors.green,
                         ),
                         new RaisedButton(
-                            child: Text("+100 Emeralis"),
-                            onPressed: null
+                          child: Text("+100 Emeralis",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'JosefinSans',
+                            ),),
+                          onPressed: null,
+                          color: Colors.green,
+                          disabledColor: Colors.green,
                         ),
                         new RaisedButton(
-                            child: Text("+250 Emeralis"),
-                            onPressed: null
+                          child: Text("+250 Emeralis",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'JosefinSans',
+                            ),),
+                          onPressed: null,
+                          color: Colors.green,
+                          disabledColor: Colors.green,
                         ),
                         new RaisedButton(
-                            child: Text("+500 Emeralis"),
-                            onPressed: null
+                          child: Text("+500 Emeralis",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'JosefinSans',
+                            ),),
+                          onPressed: null,
+                          color: Colors.green,
+                          disabledColor: Colors.green,
                         ),
                         new RaisedButton(
-                            child: Text("+1,000 Emeralis"),
-                            onPressed: null
+                          child: Text("+1,000 Emeralis",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'JosefinSans',
+                            ),),
+                          onPressed: null,
+                          color: Colors.green,
+                          disabledColor: Colors.green,
                         ),
                         new RaisedButton(
-                            child: Text("+5,000 Emeralis"),
-                            onPressed: null
+                          child: Text("+5,000 Emeralis",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'JosefinSans',
+                            ),),
+                          onPressed: null,
+                          color: Colors.green,
+                          disabledColor: Colors.green,
                         ),
                         new RaisedButton(
-                            child: Text("+10,000 Emeralis"),
-                            onPressed: null
+                          child: Text("+10,000 Emeralis",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'JosefinSans',
+                            ),),
+                          onPressed: null,
+                          color: Colors.green,
+                          disabledColor: Colors.green,
                         ),
 
                       ],
@@ -71,50 +129,115 @@ class HomeScreenWidget extends StatelessWidget {
             },
           ),
           new RaisedButton(
-            child: Text("Gold"),
+            child: Text("Gold",
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'JosefinSans',
+
+            ),
+            ),
+            color: Colors.amberAccent[400],
+            disabledColor: Colors.amberAccent[400],
             onPressed: (){
               showDialog(
-                  context: context,
-                  builder: (BuildContext context) => new Card(
-                    margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
-                    child: new Column(
-                      children: <Widget>[
-                        new RaisedButton(
-                            child: Text("+1 Gold"),
-                            onPressed: null
-                        ),
-                        new RaisedButton(
-                            child: Text("+10 Gold"),
-                            onPressed: null
-                        ),
-                        new RaisedButton(
-                            child: Text("+100 Gold"),
-                            onPressed: null
-                        ),
-                        new RaisedButton(
-                            child: Text("+250 Gold"),
-                            onPressed: null
-                        ),
-                        new RaisedButton(
-                            child: Text("+500 Gold"),
-                            onPressed: null
-                        ),
-                        new RaisedButton(
-                            child: Text("+1,000 Gold"),
-                            onPressed: null
-                        ),
-                        new RaisedButton(
-                            child: Text("+5,000 Gold"),
-                            onPressed: null
-                        ),
-                        new RaisedButton(
-                            child: Text("+10,000 Gold"),
-                            onPressed: null
-                        ),
+                context: context,
+                builder: (BuildContext context) => new Card(
+                  color: Color(0xFF4B3F72),
+                  margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
+                  child: new Column(
+                    children: <Widget>[
+                      new RaisedButton(
+                        child: Text("+1 Gold",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'JosefinSans',
 
-                      ],
-                    ),
+                          ),),
+                        onPressed: null,
+                        color: Colors.amberAccent[400],
+                        disabledColor: Colors.amberAccent[400],
+                      ),
+                      new RaisedButton(
+                        child: Text("+10 Gold",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'JosefinSans',
+
+                          ),),
+                        onPressed: null,
+                        color: Colors.amberAccent[400],
+                        disabledColor: Colors.amberAccent[400],
+                      ),
+                      new RaisedButton(
+                        child: Text("+100 Gold",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'JosefinSans',
+
+                          ),),
+                        onPressed: null,
+                        color: Colors.amberAccent[400],
+                        disabledColor: Colors.amberAccent[400],
+                      ),
+                      new RaisedButton(
+                        child: Text("+250 Gold",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'JosefinSans',
+
+                          ),),
+                        onPressed: null,
+                        color: Colors.amberAccent[400],
+                        disabledColor: Colors.amberAccent[400],
+                      ),
+                      new RaisedButton(
+                        child: Text("+500 Gold",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'JosefinSans',
+
+                          ),),
+                        onPressed: null,
+                        color: Colors.amberAccent[400],
+                        disabledColor: Colors.amberAccent[400],
+                      ),
+                      new RaisedButton(
+                        child: Text("+1,000 Gold",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'JosefinSans',
+
+                          ),),
+                        onPressed: null,
+                        color: Colors.amberAccent[400],
+                        disabledColor: Colors.amberAccent[400],
+                      ),
+                      new RaisedButton(
+                        child: Text("+5,000 Gold",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'JosefinSans',
+
+                          ),),
+                        onPressed: null,
+                        color: Colors.amberAccent[400],
+                        disabledColor: Colors.amberAccent[400],
+                      ),
+                      new RaisedButton(
+                        child: Text("+10,000 Gold",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'JosefinSans',
+
+                          ),),
+                        onPressed: null,
+                        color: Colors.amberAccent[400],
+                        disabledColor: Colors.amberAccent[400],
+                      ),
+
+                    ],
                   ),
+                ),
               );
             },
           ),
@@ -132,7 +255,7 @@ class HomeScreenWidget extends StatelessWidget {
           Align(
               alignment: Alignment(-.975,-.975),
               child: IconButton(
-                  icon: new Image.asset('assets/skillIcons/Swipe.png'),
+                  icon: Icon(Icons.public),
                   onPressed: () {
                     showDialog(
                         context: context,
@@ -163,32 +286,61 @@ class HomeScreenWidget extends StatelessWidget {
               icon: Icon(Icons.settings),
               onPressed: (){
                 showDialog(
-                    context: context,
-                    builder: (BuildContext context) => new Card(
+                  context: context,
+                  builder: (BuildContext context) => new Card(
                       color: Color(0xFF4B3F72),
-                      margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
-                      child: new RaisedButton(
-                          color: Colors.green,
-                          child: const Text(
-                            'The spectacle before us was indeed sublime',
-                            style: TextStyle(
-                                fontFamily: 'JosefinSans',
-                                fontWeight: FontWeight.w700
-                            ),
-                          ),
-                          onPressed: () {
-                            authService.signOut();// GOTCHU JASON BABY
-                            //crashes app
-                            runApp(
-                                new MaterialApp(
-                                  debugShowCheckedModeBanner: false,
-                                  home: new LoginScreen(),
+                      margin: EdgeInsets.fromLTRB(20, 300, 20, 150),
+                      child: Stack(
+                          children:[
+                            Align(
+                                alignment: Alignment(0,-.92),
+                                child: Container(
+                                    height:50,
+                                    width: 350,
+                                    color: Color(0xFF1F2041),
+                                    child: Align(
+                                        alignment: Alignment(0,0),
+                                        child: const Text(
+                                          'Settings',
+                                          style: TextStyle(
+                                            fontFamily: 'JosefinSans',
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        )
+                                    )
                                 )
-
-                            );
-                          }
-                      ),
-                    )
+                            ),
+                            Align(
+                                alignment: Alignment(0,.2),
+                                child: Container(
+                                    height: 45,
+                                    width: 225,
+                                    color: Colors.red,
+                                    child: new RaisedButton(
+                                        color: Colors.red,
+                                        child: const Text(
+                                          'Log Out',
+                                          style: TextStyle(
+                                            fontFamily: 'JosefinSans',
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          authService.signOut();
+                                          runApp(
+                                              new MaterialApp(
+                                                debugShowCheckedModeBanner: false,
+                                                home: new LoginScreen(),
+                                              )
+                                          );
+                                        }
+                                    )
+                                )
+                            )
+                          ]
+                      )
+                  ),
                 );
               },
             ),
@@ -196,84 +348,82 @@ class HomeScreenWidget extends StatelessWidget {
           Align(
               alignment: Alignment(0,0),
               child: IconButton(
-                  icon: Icon(Icons.save),
+                  icon: new Image.asset('assets/chrom.png'),
+                  iconSize: 250,
                   onPressed: () {
                     showDialog(
                         context: context,
                         builder: (BuildContext context) => new Card(
-                            color: Color(0xFF1F2041),
-                            margin: EdgeInsets.fromLTRB(20, 40, 20, 40),
-                            child: new Stack(
-                              children: <Widget>[
-                                Align(
-                                    alignment: Alignment(0, 0),
-                                    child: Container(
-                                        color: Color(0xFF4B3F72),
-                                        height: 655,
-                                        width: 355,
-                                        child: new Stack(
-                                            children: <Widget>[
-                                              Align(
-                                                  alignment: Alignment(0,-.85),
-                                                  child: Text(victoryString,
-                                                    style: TextStyle(
-                                                        fontFamily: 'JosefinSans',
-                                                        fontSize: 42,
-                                                        fontWeight: FontWeight.w700
-                                                    ),
-                                                  )
-                                              ),
-                                              Align(
-                                                  alignment: Alignment(0,0),
-                                                  child: Container(
-                                                      height: 40,
-                                                      width:335,
-                                                      child: new InputDecorator(
-                                                          decoration: new InputDecoration(
-                                                              labelText: 'XP',
-                                                              border: OutlineInputBorder(
-                                                                borderSide: const BorderSide(color: Colors.white),
-                                                              ),
-                                                              labelStyle: new TextStyle(color: Colors.yellow)
-                                                          )
-                                                      )
-                                                  )
-                                              ),
-                                              Align(
-                                                  alignment: Alignment(0,-.5),
-                                                  child: Container(
-                                                      height: 40,
-                                                      width:335,
-                                                      child: new InputDecorator(
-                                                          decoration: new InputDecoration(
-                                                              labelText: 'Emeralis',
-                                                              border: OutlineInputBorder(
-                                                                borderSide: const BorderSide(color: Colors.white),
-                                                              ),
-                                                              labelStyle: new TextStyle(color: Colors.green)
-                                                          )
-                                                      )
-                                                  )
-                                              ),
-                                              Align(
-                                                  alignment: Alignment(0,.85),
-                                                  child: RaisedButton(
-                                                      child: const Text('Continue'),
-                                                      color: Color(0xFF1F2041),
-                                                      onPressed: () {}
-                                                  )
+                            color: Color(0xFF4B3F72),
+                            margin: EdgeInsets.fromLTRB(20, 125, 20, 100),
+                            child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(0,8,0,0),
+                                  ),
+                                  Align(
+                                      alignment: Alignment(0,-.96),
+                                      child: Container(
+                                          height:50,
+                                          width: 350,
+                                          color: Color(0xFF1F2041),
+                                          child: Align(
+                                              alignment: Alignment(0,0),
+                                              child: const Text(
+                                                'How to Play',
+                                                style: TextStyle(
+                                                  fontFamily: 'JosefinSans',
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
                                               )
-                                            ]
-                                        )
-                                    )
-                                )
-                              ],
-                            )
+                                          )
+                                      )
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(0,8,0,0),
+                                  ),
+                                  Text(
+                                      'In Menu:',
+                                      style: new TextStyle(
+                                        fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w700,
+                                      )
+                                  ),
+                                  Text(
+                                      'Home: a place to learn info about the game, log out, or read news'
+                                          'Team: Aseemble your characters and view their attributes. Hold to drag them into a team slot or double tap to view their attributes'
+                                          'Play: Select what level you want to play and bring your friend'
+                                          'Summon: Exchange your saved up currency to gain new characters. You can get them in batches of 10 or one at a time.'
+                                          'Friend: Add or manage your IRL/Online friends.'
+                                          '- Once you have made your team and started a level, your characters will take over'
+                                          '-If you wan tot keep track of the action, you can monitor the ATB gauge at the bottom of the screen.'
+                                          '-You will lose if all of your characters HP falls to 0.',
+                                      style: new TextStyle(
+                                        fontSize: 16.0, color: Colors.white,
+                                      )
+                                  ),
+                                  Text(
+                                      'In Battle:',
+                                      style: new TextStyle(
+                                        fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w700,
+                                      )
+                                  ),
+                                  Text(
+                                      '- Once you have made your team and started a level, your characters will take over'
+                                          '-If you wan tot keep track of the action, you can monitor the ATB gauge at the bottom of the screen.'
+                                          '-You will lose if all of your characters HP falls to 0.',
+                                      style: new TextStyle(
+                                        fontSize: 16.0, color: Colors.white,
+                                      )
+                                  ),
+
+                                ]
+                            )//
                         )
                     );
                   }
               )
-          )
+          ),
         ],
       ),
     );
@@ -284,6 +434,6 @@ class HomeScreenWidget extends StatelessWidget {
 //    }
 //    else{
 //      victoryString = 'Failure';
-//    }
+//    }   THIS CODE IS FOR THE FINAL IMPLEMENTATION  THIS CODE IS FOR THE FINAL IMPLEMENTATION
 
 
