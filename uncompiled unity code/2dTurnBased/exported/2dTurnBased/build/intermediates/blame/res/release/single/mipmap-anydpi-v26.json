@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\build\\intermediates\\res\\merged\\release\\mipmap-anydpi-v26\\app_icon.xml",
+        "source": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\src\\main\\res\\mipmap-anydpi-v26\\app_icon.xml"
+    },
+    {
+        "merged": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\build\\intermediates\\res\\merged\\release\\mipmap-anydpi-v26\\app_icon_round.xml",
+        "source": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\src\\main\\res\\mipmap-anydpi-v26\\app_icon_round.xml"
+    }
+]

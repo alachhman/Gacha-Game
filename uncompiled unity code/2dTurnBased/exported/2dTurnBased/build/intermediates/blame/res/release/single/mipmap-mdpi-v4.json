@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi-v4\\ic_launcher_background.png",
+        "source": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\src\\main\\res\\mipmap-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi-v4\\app_icon.png",
+        "source": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\src\\main\\res\\mipmap-mdpi\\app_icon.png"
+    },
+    {
+        "merged": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi-v4\\ic_launcher_foreground.png",
+        "source": "D:\\Projects\\2dTurnBased\\exported\\2dTurnBased\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    }
+]
